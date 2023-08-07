@@ -5,7 +5,7 @@ import fs from "node:fs";
 
 // build config
 let result = await esbuild.build({
-  entryPoints: ["./src/index.html", "./src/react.ico", "./src/main.tsx"],
+  entryPoints: ["./src/index.html", "./src/favicon.ico", "./src/main.tsx"],
   loader: {
     ".html": "copy",
     ".ico": "copy",
