@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "dev": "node config/esbuild.dev.mjs",
-    "build": "node config/esbuild.build.mjs",
+    "build": "node config/esbuild.vercel.mjs",
+    "build-local": "node config/esbuild.build.mjs",
     "analyze": "node config/esbuild.analyze.mjs"
   },
   "author": "sudo-adduser-jordan",
