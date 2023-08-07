@@ -1,5 +1,7 @@
+// Vercel Deploy Build Config
+
 import * as esbuild from "esbuild";
-import fs from "node:fs";
+// import fs from "node:fs";
 
 // build config
 let result = await esbuild.build({
@@ -15,16 +17,16 @@ let result = await esbuild.build({
   minify: true,
   // target: ['chrome58', 'firefox57', 'safari11', 'edge16'],
   metafile: true,
-  outdir: "./toolchain/build/dist/",
+  //   outdir: "./toolchain/build/dist/",
   outdir: "./public",
   logLevel: "info",
 });
 
 // write meta file - this can be used at https://esbuild.github.io/analyze/
-fs.writeFileSync(
-  "./toolchain/build/meta.json",
-  JSON.stringify(result.metafile)
-);
+// fs.writeFileSync(
+//   "./toolchain/build/meta.json",
+//   JSON.stringify(result.metafile)
+// );
 
 /* print meta file results */
 // console.log(result)
