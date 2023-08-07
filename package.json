@@ -7,7 +7,7 @@
     "build": "node config/esbuild.build.mjs",
     "analyze": "node config/esbuild.analyze.mjs"
   },
-  "author": "",
+  "author": "sudo-adduser-jordan",
   "license": "ISC",
   "dependencies": {
     "esbuild": "0.17.19",
