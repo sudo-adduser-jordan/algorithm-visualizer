@@ -3,7 +3,7 @@ import fs from "node:fs";
 
 // analyze config
 let result = await esbuild.build({
-  entryPoints: ["./src/index.html", "./src/favicon.ico", "./src/main.tsx"],
+  entryPoints: ["./src/index.html", "./src/favicon.ico", "./src/index.tsx"],
   loader: {
     ".html": "copy",
     ".ico": "copy",
