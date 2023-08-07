@@ -16,6 +16,7 @@ let result = await esbuild.build({
   // target: ['chrome58', 'firefox57', 'safari11', 'edge16'],
   metafile: true,
   outdir: "./toolchain/build/dist/",
+  outdir: "./public",
   logLevel: "info",
 });
 
@@ -26,7 +27,6 @@ fs.writeFileSync(
 );
 
 /* print meta file results */
-
 // console.log(result)
 
 console.log(await esbuild.analyzeMetafile(result.metafile));
