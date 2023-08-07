@@ -1,0 +1,22 @@
+{
+  "name": "toolchain",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "dev": "node config/esbuild.dev.mjs",
+    "build": "node config/esbuild.build.mjs",
+    "analyze": "node config/esbuild.analyze.mjs"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "esbuild": "0.17.19",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.18",
+    "@types/react-dom": "^18.2.7",
+    "typescript": "^5.1.6"
+  }
+}
