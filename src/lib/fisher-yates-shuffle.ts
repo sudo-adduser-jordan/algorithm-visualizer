@@ -1,5 +1,5 @@
 type Element = {
-  key: number;
+  value: number;
   color: string;
 };
 

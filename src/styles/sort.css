@@ -13,27 +13,15 @@
 .box {
   display: flex;
   flex-direction: row;
-  /* justify-content: center; */
-  /* align-items: end; */
-  /* align-items: baseline; */
-  transition: all ease 0.5s;
+  height: 400px;
+  background-color: rebeccapurple;
+  justify-content: center;
+  align-items: baseline;
+  /* transition: all ease 0.5s; */
 }
 
 .element {
-  width: 1.75rem;
+  width: 0.5rem;
   margin: 1px;
-  /* background-color: blue; */
   text-align: center;
-}
-
-.pointer-element {
-  background-color: red;
-}
-
-.selected-element {
-  background-color: purple;
-}
-
-.sorted-element {
-  background-color: green;
 }

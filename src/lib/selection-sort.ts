@@ -1,31 +1,41 @@
+import { sleep } from "./sleep";
+
 type Element = {
-  key: number;
+  value: number;
   color: string;
 };
 
+type Paramaters = {
+  array: Element[];
+  setArray: React.Dispatch<React.SetStateAction<Element[]>>;
+};
+
 // Javascript program for implementation of selection sort
-function swap(array: Element[], x: number, y: number) {
-  var temp = array[x].key;
-  array[x].key = array[y].key;
-  array[y].key = temp;
-}
-
-export function selectionSort(array: Element[], length: number): Element[] {
-  var i, j, min_index;
-
-  // One by one move boundary of unsorted subarray
-  for (i = 0; i < length - 1; i++) {
-    // Find the minimum element in unsorted array
-    min_index = i;
-    array[i].color = "green";
-    for (j = i + 1; j < length; j++) {
-      if (array[j].key < array[min_index].key) {
-        min_index = j;
+export async function selectionSort({ array, setArray }: Paramaters) {
+  var i, k, min_idx;
+  for (i = 0; i < array.length - 1; i++) {
+    min_idx = i;
+    for (k = i + 1; k < array.length; k++) {
+      array[k].color = "red";
+      array[k - 1].color = "blue";
+      await sleep(1);
+      setArray([...array]);
+      if (array[k].value < array[min_idx].value) {
+        min_idx = k;
+        // array[k].color = "yellow";
+        // setArray([...array]);
       }
     }
-
-    // Swap the found minimum element with the first element
-    swap(array, min_index, i);
+    swap(array, min_idx, i);
+    array[i].color = "green";
+    setArray([...array]);
   }
-  return array;
+  array[array.length - 1].color = "green";
+  setArray([...array]);
+}
+
+function swap(array: Element[], xp: number, yp: number) {
+  var temp = array[xp].value;
+  array[xp].value = array[yp].value;
+  array[yp].value = temp;
 }
