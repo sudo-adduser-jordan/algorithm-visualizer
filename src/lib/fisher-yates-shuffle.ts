@@ -1,4 +1,9 @@
-export function shuffleArray(array: number[]): number[] {
+type Element = {
+  key: number;
+  color: string;
+};
+
+export function shuffleArray(array: Element[]): Element[] {
   let currentIndex = array.length,
     randomIndex;
 

@@ -1,5 +1,6 @@
 .container {
   background-color: mediumpurple;
+  color: white;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -15,4 +16,24 @@
   /* justify-content: center; */
   /* align-items: end; */
   /* align-items: baseline; */
+  transition: all ease 0.5s;
+}
+
+.element {
+  width: 1.75rem;
+  margin: 1px;
+  /* background-color: blue; */
+  text-align: center;
+}
+
+.pointer-element {
+  background-color: red;
+}
+
+.selected-element {
+  background-color: purple;
+}
+
+.sorted-element {
+  background-color: green;
 }

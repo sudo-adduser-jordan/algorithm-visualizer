@@ -1,21 +1,31 @@
+type Element = {
+  key: number;
+  color: string;
+};
+
 // Javascript program for implementation of selection sort
-function swap(array: number[], x: number, y: number) {
-  var temp = array[x];
-  array[x] = array[y];
-  array[y] = temp;
+function swap(array: Element[], x: number, y: number) {
+  var temp = array[x].key;
+  array[x].key = array[y].key;
+  array[y].key = temp;
 }
 
-export function selectionSort(array: number[], length: number): number[] {
-  var i, j, min_idx;
+export function selectionSort(array: Element[], length: number): Element[] {
+  var i, j, min_index;
 
   // One by one move boundary of unsorted subarray
   for (i = 0; i < length - 1; i++) {
     // Find the minimum element in unsorted array
-    min_idx = i;
-    for (j = i + 1; j < length; j++) if (array[j] < array[min_idx]) min_idx = j;
+    min_index = i;
+    array[i].color = "green";
+    for (j = i + 1; j < length; j++) {
+      if (array[j].key < array[min_index].key) {
+        min_index = j;
+      }
+    }
 
     // Swap the found minimum element with the first element
-    swap(array, min_idx, i);
+    swap(array, min_index, i);
   }
   return array;
 }

@@ -3,14 +3,20 @@ import { useState } from "react";
 import { shuffleArray } from "../lib/fisher-yates-shuffle";
 import { selectionSort } from "../lib/selection-sort";
 
+type Element = {
+  key: number;
+  color: string;
+};
+
 export default function Sort() {
-  const [array, setArray] = useState<number[]>(fillArray(10));
+  const [array, setArray] = useState<Element[]>(fillArray(10));
+  // const [sortedArray, setSortedArray] = useState<number[]>([]);
   const [method, setMethod] = useState("Selection");
 
-  function fillArray(n: number): number[] {
-    const arrayOfElements: number[] = [];
+  function fillArray(n: number): Element[] {
+    const arrayOfElements: Element[] = [];
     for (let i = 1; i <= n; i++) {
-      arrayOfElements.push(i);
+      arrayOfElements.push({ key: i, color: "blue" });
     }
     return shuffleArray(arrayOfElements);
   }
@@ -22,23 +28,27 @@ export default function Sort() {
   }
 
   function sortArray() {
-    let sortedArray: number[] = [];
+    let sortedArray: Element[] = [];
 
     switch (method) {
       case "Selection":
         sortedArray = selectionSort(array, array.length);
         break;
       case "Quick":
+        // sortedArray = quickSort(array, array.length);
         break;
       case "Merge":
+        // sortedArray = mergeSort(array, array.length);
         break;
       default:
         new Error("No sorting algorithm selected.");
     }
 
     setArray([...sortedArray]);
+    // setArray([...array]);
+    // setSortedArray([...sortedArray]);
   }
-
+  console.log(array);
   return (
     <main className="container">
       <section>
@@ -53,18 +63,16 @@ export default function Sort() {
       </section>
 
       <section className="box">
-        {array.map((i) => (
+        {array.map((element) => (
           <div
-            key={i}
+            key={element.key}
+            className="element"
             style={{
-              width: `1.75rem`,
-              height: `${i + 1}rem`,
-              margin: "1px",
-              backgroundColor: "blue",
-              textAlign: "center",
+              height: `${element.key + 1}rem`,
+              backgroundColor: element.color,
             }}
           >
-            {i}
+            {element.key}
           </div>
         ))}
       </section>
