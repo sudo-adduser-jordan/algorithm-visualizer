@@ -16,7 +16,7 @@
   height: 400px;
   background-color: rebeccapurple;
   justify-content: center;
-  align-items: baseline;
+  align-items: end;
   /* transition: all ease 0.5s; */
 }
 

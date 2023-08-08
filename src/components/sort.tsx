@@ -2,14 +2,15 @@ import "../styles/sort.css";
 import { useState } from "react";
 import { shuffleArray } from "../lib/fisher-yates-shuffle";
 import { selectionSort } from "../lib/selection-sort";
+import { quickSort } from "../lib/quick-sort";
 
-type Element = {
+type MyType = {
   value: number;
   color: string;
 };
 
-function fillArray(n: number): Element[] {
-  const arrayOfElements: Element[] = [];
+function fillArray(n: number): MyType[] {
+  const arrayOfElements: MyType[] = [];
   for (let i = 1; i <= n; i++) {
     arrayOfElements.push({ value: i, color: "blue" });
   }
@@ -17,7 +18,7 @@ function fillArray(n: number): Element[] {
 }
 
 export default function Sort() {
-  const [array, setArray] = useState<Element[]>(fillArray(100));
+  const [array, setArray] = useState<MyType[]>(fillArray(50));
   const [method, setMethod] = useState("Selection");
 
   async function sortArray() {
@@ -26,7 +27,7 @@ export default function Sort() {
         selectionSort({ array, setArray });
         break;
       case "Quick":
-        // quickSort(array, array.length);
+        quickSort(array, setArray, 0, array.length);
         break;
       case "Merge":
         // mergeSort(array, array.length);
@@ -51,7 +52,36 @@ export default function Sort() {
           />
         ))}
       </section>
-      <button onClick={async () => sortArray()}>Sort</button>
+
+      <button
+        onClick={async () => {
+          setMethod("Selection");
+          selectionSort({ array, setArray });
+          // sortArray();
+        }}
+      >
+        Selection Sort
+      </button>
+
+      <button
+        onClick={async () => {
+          setMethod("Quick");
+          quickSort(array, setArray, 0, array.length - 1);
+          // sortArray();
+        }}
+      >
+        Quick Sort
+      </button>
+
+      <button
+        onClick={async () => {
+          setMethod("Merge");
+          // sortArray();
+        }}
+      >
+        Merge Sort
+      </button>
+
       <button onClick={() => window.location.reload()}>Reload</button>
     </main>
   );
