@@ -5,16 +5,17 @@ function swap(array: number[], x: number, y: number) {
   array[y] = temp;
 }
 
-function selectionSort(array: number[], n: number) {
+export function selectionSort(array: number[], length: number): number[] {
   var i, j, min_idx;
 
   // One by one move boundary of unsorted subarray
-  for (i = 0; i < n - 1; i++) {
+  for (i = 0; i < length - 1; i++) {
     // Find the minimum element in unsorted array
     min_idx = i;
-    for (j = i + 1; j < n; j++) if (array[j] < array[min_idx]) min_idx = j;
+    for (j = i + 1; j < length; j++) if (array[j] < array[min_idx]) min_idx = j;
 
     // Swap the found minimum element with the first element
     swap(array, min_idx, i);
   }
+  return array;
 }
