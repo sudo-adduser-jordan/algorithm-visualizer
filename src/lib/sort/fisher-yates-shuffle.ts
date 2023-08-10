@@ -1,9 +1,10 @@
-type Element = {
+export type Bar = {
+  id: string;
   value: number;
-  color: string;
+  style: string;
 };
 
-export function shuffleArray(array: Element[]): Element[] {
+export function shuffleArray(array: Bar[]) {
   let currentIndex = array.length,
     randomIndex;
 
@@ -14,11 +15,6 @@ export function shuffleArray(array: Element[]): Element[] {
     currentIndex--;
 
     // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex],
-      array[currentIndex],
-    ];
+    [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
   }
-
-  return array;
 }

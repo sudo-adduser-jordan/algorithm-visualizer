@@ -1,6 +1,4 @@
-.container {
-  background-color: mediumpurple;
-  color: white;
+.main-container {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -8,20 +6,50 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #d9afd9;
+  background-image: linear-gradient(0deg, #d9afd9 0%, #97d9e1 100%);
 }
 
-.box {
+.button {
+  margin: 1rem;
+}
+
+.bar-container {
   display: flex;
-  flex-direction: row;
-  height: 400px;
-  background-color: rebeccapurple;
-  justify-content: center;
   align-items: end;
-  /* transition: all ease 0.5s; */
 }
 
-.element {
-  width: 0.5rem;
-  margin: 1px;
+.bar {
+  padding-top: 7px;
+  font-family: sans-serif;
+  font-weight: 700;
+  display: inline-block;
+  color: white;
+  width: 40px;
+  margin-left: 6px;
+  background-color: #0ecbf6;
   text-align: center;
+  border-radius: 5px;
+}
+
+.bar-default {
+  background-color: #0ecbf6;
+}
+.bar-sorted {
+  background-color: lime;
+}
+.bar-swap {
+  background-color: red;
+}
+.bar-min {
+  background-color: yellow;
+}
+.index-bar {
+  background-color: red;
+}
+.pivot-bar {
+  background-color: yellow;
+}
+.swap-bar {
+  background-color: purple;
 }

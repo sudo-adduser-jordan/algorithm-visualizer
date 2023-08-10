@@ -1,0 +1,2 @@
+console.log("hit")
+console.log(array);
