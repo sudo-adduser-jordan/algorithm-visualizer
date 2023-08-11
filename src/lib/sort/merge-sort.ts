@@ -1,70 +1,31 @@
-type Results = Bar[][];
-type Bar = {
-  id: string;
-  value: number;
-  style: string;
-};
+import { BarArray, ResultArray } from "../../types";
 
-export function mergeSort(array: Bar[]) {
-  var result: Results = [];
-  sort(array, 0, array.length - 1, result);
+export function mergeSort(array: BarArray) {
+  const result: ResultArray = [];
+  const copy = array;
 
-  array.forEach((element) => {
-    element.style = "bar-sorted";
-  });
+  array = sort(array, copy, result);
   result.push(JSON.parse(JSON.stringify(array)));
   return result;
 }
 
-function sort(array: Bar[], l: number, r: number, result: Results) {
-  if (l < r) {
-    let m = Math.floor(l + (r - l) / 2);
-    sort(array, l, m, result);
-    sort(array, m + 1, r, result);
-    merge(array, l, m, r, result);
-    result.push(JSON.parse(JSON.stringify(array)));
-  }
+function sort(array: BarArray, copy: BarArray, result: ResultArray): BarArray {
+  if (array.length <= 1) return array;
+
+  const middle = Math.floor(array.length / 2);
+  const left = sort(array.slice(0, middle), copy, result);
+  const right = sort(array.slice(middle), copy, result);
+  return merge(left, right);
 }
 
-function merge(array: Bar[], l: number, m: number, r: number, result: Results) {
-  let temp_left = [];
-  let temp_right = [];
-
-  for (let i = l; i <= m; i++) {
-    temp_left.push(JSON.parse(JSON.stringify(array[i])));
-  }
-  for (let i = m + 1; i <= r; i++) {
-    temp_right.push(JSON.parse(JSON.stringify(array[i])));
-  }
-
-  var i = 0;
-  var j = 0;
-  var k = l;
-  var n1 = m - l + 1;
-  var n2 = r - m;
-  while (i < n1 && j < n2) {
-    if (temp_left[i].value <= temp_right[j].value) {
-      array[k] = temp_left[i];
-      array[k].style = "bar-swap";
-      i++;
-      k++;
+function merge(left: BarArray, right: BarArray): BarArray {
+  const sortedArr: BarArray = [];
+  while (left.length && right.length) {
+    if (left[0].value < right[0].value) {
+      sortedArr.push(left.shift()!);
     } else {
-      array[k] = temp_right[j];
-      array[k].style = "bar-swap";
-      j++;
-      k++;
+      sortedArr.push(right.shift()!);
     }
   }
-  while (i < n1) {
-    array[k] = temp_left[i];
-    array[k].style = "bar-swap";
-    k++;
-    i++;
-  }
-  while (j < n2) {
-    array[k] = temp_right[j];
-    array[k].style = "bar-swap";
-    k++;
-    j++;
-  }
+  return [...sortedArr, ...left, ...right];
 }

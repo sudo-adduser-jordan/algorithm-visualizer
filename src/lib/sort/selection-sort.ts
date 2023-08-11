@@ -1,34 +1,24 @@
-type Results = Bar[][];
-type Bar = {
-  id: string;
-  value: number;
-  style: string;
-};
+import { BarArray, ResultArray } from "../../types";
 
-export function selectionSort(array: Bar[]) {
-  var results: Results = [];
+export function selectionSort(array: BarArray) {
+  const results: ResultArray = [];
 
   for (let i = 0; i < array.length; i++) {
     let max = i;
-    array[i].style = "bar-swap";
-
+    array[i].backgroundColor = "var(--index-bar)";
     for (let j = i + 1; j < array.length; j++) {
       if (array[j].value < array[max].value) {
-        array[max].style = "bar-default";
+        array[max].backgroundColor = "var(--default-bar)";
         max = j;
       }
-      array[j].style = "bar-swap";
-      array[max].style = "bar-min";
+      array[j].backgroundColor = "var(--index-bar)";
+      array[max].backgroundColor = "var(--min-bar)";
       results.push(JSON.parse(JSON.stringify(array)));
-      array[j].style = "bar";
-      if (j == array.length) {
-      }
+      array[j].backgroundColor = "var(--default-bar)";
     }
-
-    array[i].style = "bar";
+    array[max].backgroundColor = "var(--default-bar)";
     [array[i], array[max]] = [array[max], array[i]];
-
-    array[i].style = "bar-sorted";
+    array[i].backgroundColor = "var(--sorted-bar)";
     results.push(JSON.parse(JSON.stringify(array)));
   }
   results.push(JSON.parse(JSON.stringify(array)));

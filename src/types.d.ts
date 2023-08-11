@@ -1,6 +1,6 @@
-export type Results = Bar[][];
+export type ResultArray = BarArray[];
+export type BarArray = Bar[];
 export type Bar = {
-  id: string;
   value: number;
-  style: string;
+  backgroundColor: string;
 };

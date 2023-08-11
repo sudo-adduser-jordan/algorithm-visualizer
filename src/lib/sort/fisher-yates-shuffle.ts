@@ -1,10 +1,6 @@
-export type Bar = {
-  id: string;
-  value: number;
-  style: string;
-};
+import { BarArray } from "../../types";
 
-export function shuffleArray(array: Bar[]) {
+export function shuffleArray(array: BarArray) {
   let currentIndex = array.length,
     randomIndex;
 

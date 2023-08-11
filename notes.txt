@@ -1,0 +1,7 @@
+console.log("hit")
+console.log(array);
+
+var(--default-bar)
+var(--index-bar)
+var(--sorted-bar)
+var(--min-bar)

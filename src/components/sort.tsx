@@ -1,50 +1,52 @@
 import "../styles/sort.css";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Bar, Results } from "../types";
+import { BarArray, ResultArray } from "../types";
 import { shuffleArray } from "../lib/sort/fisher-yates-shuffle";
 import { selectionSort } from "../lib/sort/selection-sort";
-import { quickSort } from "../lib/sort/quick-sort";
-import { mergeSort } from "../lib/sort/merge-sort";
+// import { quickSort } from "../lib/sort/quick-sort";
+// import { mergeSort } from "../lib/sort/merge-sort";
 
-const createArray = () => {
-  let array: Bar[] = [];
+function createArray() {
+  const array: BarArray = [];
   for (let i = 0; i < 15; i++) {
     array.push({
-      id: "id-" + i,
       value: i,
-      style: "",
+      backgroundColor: "var(--default-bar)",
     });
   }
   shuffleArray(array);
   return array;
-};
+}
 
 export default function Sorting() {
-  const [array, setArray] = useState<Bar[]>(createArray);
+  const [array, setArray] = useState<BarArray>(createArray);
+  const [speed, setSpeed] = useState(200);
 
   function sort() {
-    var results: Results = [];
-    results = selectionSort(array);
+    let result: ResultArray = [];
+    result = selectionSort(array);
     // results = quickSort(array);
     // results = mergeSort(array);
-    for (let i = 0; i < results.length; i++) {
+    for (let i = 0; i < result.length; i++) {
       setTimeout(() => {
-        setArray(results[i]);
-      }, 150 * i);
+        setArray(result[i]);
+      }, speed * i);
     }
   }
 
   return (
     <main className="main-container">
       <section className="bar-container">
-        {array.map((element, index) => (
+        {array.map((element) => (
           <motion.div
-            key={element.id}
-            id={element.id}
+            key={element.value}
             layout
-            className={`bar ${element.style}`}
-            style={{ height: `${element.value + 2}rem` }}
+            className="bar"
+            style={{
+              height: `${element.value + 2}rem`,
+              backgroundColor: element.backgroundColor,
+            }}
           >
             {element.value}
           </motion.div>
@@ -52,6 +54,9 @@ export default function Sorting() {
       </section>
       <button className="button" onClick={sort}>
         Sort
+      </button>
+      <button className="button" onClick={() => location.reload()}>
+        Reload
       </button>
       {/* <button onClick={}>Selection Sort</button> */}
       {/* <button onClick={}>Quick Sort</button> */}
