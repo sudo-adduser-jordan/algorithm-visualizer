@@ -53,34 +53,31 @@ export default function Sorting() {
   }
 
   return (
-    <>
-      <Navigation />
-      <main className="main-container">
-        <section className="bar-container">
-          {array.map((element) => (
-            <motion.div
-              key={element.value}
-              layout
-              className="bar"
-              style={{
-                height: `${element.value + 2}rem`,
-                backgroundColor: element.backgroundColor,
-              }}
-            >
-              {element.value}
-            </motion.div>
-          ))}
-        </section>
+    <main className="main-container">
+      <div className="bar-container">
+        {array.map((element) => (
+          <motion.div
+            key={element.value}
+            layout
+            className="bar"
+            style={{
+              height: `${element.value + 2}rem`,
+              backgroundColor: element.backgroundColor,
+            }}
+          >
+            {element.value}
+          </motion.div>
+        ))}
+      </div>
 
-        <section className="button-container">
-          <Button label="Selection Sort" method="Selection" sort={() => sort("Selection")} />
-          <Button label="Bubble Sort" method="Bubble" sort={() => sort("Bubble")} />
-          <Button label="Quick Sort" method="Quick" sort={() => sort("Quick")} />
-          <button className="button" onClick={() => location.reload()}>
-            Reload
-          </button>
-        </section>
-      </main>
-    </>
+      <div className="button-container">
+        <Button label="Selection Sort" method="Selection" sort={() => sort("Selection")} />
+        <Button label="Bubble Sort" method="Bubble" sort={() => sort("Bubble")} />
+        <Button label="Quick Sort" method="Quick" sort={() => sort("Quick")} />
+        <button className="button" onClick={() => location.reload()}>
+          Reload
+        </button>
+      </div>
+    </main>
   );
 }

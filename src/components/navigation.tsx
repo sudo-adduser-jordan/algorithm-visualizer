@@ -11,7 +11,7 @@ import { LuBarChart3 } from "react-icons/lu";
 
 export default function Navigation() {
   return (
-    <section className="container">
+    <section className="navigation-container">
       <div className="title">
         <LuBarChart3 className="icon" size={25} />
         <div>Sorting Algorithms</div>
