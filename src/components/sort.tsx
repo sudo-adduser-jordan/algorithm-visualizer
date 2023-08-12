@@ -1,4 +1,4 @@
-import "../styles/sort.css";
+import "./sort.css";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { BarArray, ResultArray } from "../types";
