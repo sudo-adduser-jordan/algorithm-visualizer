@@ -6,6 +6,7 @@ export function selectionSort(array: BarArray) {
   for (let i = 0; i < array.length; i++) {
     let max = i;
     array[i].backgroundColor = "var(--index-bar)";
+    results.push(JSON.parse(JSON.stringify(array)));
     for (let j = i + 1; j < array.length; j++) {
       if (array[j].value < array[max].value) {
         array[max].backgroundColor = "var(--default-bar)";
