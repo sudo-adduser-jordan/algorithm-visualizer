@@ -6,7 +6,7 @@
   "license": "",
   "scripts": {
     "lint": "npx eslint ./src",
-    "types": "",
+    "types": "npx tsc --noEmit",
     "dev": "node config/esbuild.dev.mjs",
     "build": "node config/esbuild.vercel.mjs",
     "build-local": "node config/esbuild.build.mjs",
