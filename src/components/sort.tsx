@@ -22,7 +22,8 @@ function createArray() {
 
 export default function Sorting() {
   const [array, setArray] = useState<BarArray>(createArray);
-  const [speed, setSpeed] = useState(100);
+  // const [speed, setSpeed] = useState(100);
+  const [speed] = useState(100);
 
   function sort(method: string) {
     let result: ResultArray = [];

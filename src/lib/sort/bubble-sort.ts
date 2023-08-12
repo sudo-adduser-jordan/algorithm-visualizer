@@ -1,7 +1,7 @@
 import { BarArray, ResultArray } from "../../types";
 
 export function bubbleSort(array: BarArray) {
-  let result: ResultArray = [];
+  const result: ResultArray = [];
   let i = 0;
   let j = 0;
   let swapped;
