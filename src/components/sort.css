@@ -10,10 +10,6 @@
   background-image: linear-gradient(0deg, #d9afd9 0%, #97d9e1 100%);
 }
 
-.button {
-  margin: 1rem;
-}
-
 .bar-container {
   display: flex;
   align-items: end;

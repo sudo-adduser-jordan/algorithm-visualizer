@@ -2,12 +2,14 @@ import "./sort.css";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { BarArray, ResultArray } from "../types";
+
 import { shuffleArray } from "../lib/sort/fisher-yates-shuffle";
 import { selectionSort } from "../lib/sort/selection-sort";
 import { quickSort } from "../lib/sort/quick-sort";
 import { bubbleSort } from "../lib/sort/bubble-sort";
+
 import Navigation from "./navigation";
-// import { mergeSort } from "../lib/sort/merge-sort";
+import Button from "./button";
 
 function createArray() {
   const array: BarArray = [];
@@ -69,34 +71,15 @@ export default function Sorting() {
             </motion.div>
           ))}
         </section>
-        <button
-          className="button"
-          onClick={() => {
-            sort("Selection");
-          }}
-        >
-          Selection Sort
-        </button>
-        <button
-          className="button"
-          onClick={() => {
-            sort("Bubble");
-          }}
-        >
-          Bubble Sort
-        </button>
-        <button
-          className="button"
-          onClick={() => {
-            sort("Quick");
-          }}
-        >
-          Quick Sort
-        </button>
-        {/* <button onClick={}>Quick Sort</button> */}
-        <button className="button" onClick={() => location.reload()}>
-          Reload
-        </button>
+
+        <section className="button-container">
+          <Button label="Selection Sort" method="Selection" sort={() => sort("Selection")} />
+          <Button label="Bubble Sort" method="Bubble" sort={() => sort("Bubble")} />
+          <Button label="Quick Sort" method="Quick" sort={() => sort("Quick")} />
+          <button className="button" onClick={() => location.reload()}>
+            Reload
+          </button>
+        </section>
       </main>
     </>
   );
