@@ -5,6 +5,7 @@ import { BarArray, ResultArray } from "../types";
 import { shuffleArray } from "../lib/sort/fisher-yates-shuffle";
 import { selectionSort } from "../lib/sort/selection-sort";
 import { quickSort } from "../lib/sort/quick-sort";
+import { bubbleSort } from "../lib/sort/bubble-sort";
 // import { mergeSort } from "../lib/sort/merge-sort";
 
 function createArray() {
@@ -21,18 +22,23 @@ function createArray() {
 
 export default function Sorting() {
   const [array, setArray] = useState<BarArray>(createArray);
-  const [method, setMethod] = useState("");
   const [speed, setSpeed] = useState(100);
 
-  function sort() {
+  function sort(method: string) {
     let result: ResultArray = [];
 
     switch (method) {
       case "Selection":
         result = selectionSort(array);
+        break;
+      case "Bubble":
+        result = bubbleSort(array);
+        break;
       case "Quick":
         result = quickSort(array);
+        break;
       default:
+        console.log(new Error());
     }
 
     for (let i = 0; i < result.length; i++) {
@@ -62,8 +68,7 @@ export default function Sorting() {
       <button
         className="button"
         onClick={() => {
-          setMethod("Selection");
-          sort();
+          sort("Selection");
         }}
       >
         Selection Sort
@@ -71,8 +76,15 @@ export default function Sorting() {
       <button
         className="button"
         onClick={() => {
-          setMethod("Quick");
-          sort();
+          sort("Bubble");
+        }}
+      >
+        Bubble Sort
+      </button>
+      <button
+        className="button"
+        onClick={() => {
+          sort("Quick");
         }}
       >
         Quick Sort
