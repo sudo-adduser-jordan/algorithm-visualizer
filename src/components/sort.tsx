@@ -4,12 +4,12 @@ import { motion } from "framer-motion";
 import { BarArray, ResultArray } from "../types";
 import { shuffleArray } from "../lib/sort/fisher-yates-shuffle";
 import { selectionSort } from "../lib/sort/selection-sort";
-// import { quickSort } from "../lib/sort/quick-sort";
+import { quickSort } from "../lib/sort/quick-sort";
 // import { mergeSort } from "../lib/sort/merge-sort";
 
 function createArray() {
   const array: BarArray = [];
-  for (let i = 0; i < 15; i++) {
+  for (let i = 0; i < 16; i++) {
     array.push({
       value: i,
       backgroundColor: "var(--default-bar)",
@@ -21,13 +21,20 @@ function createArray() {
 
 export default function Sorting() {
   const [array, setArray] = useState<BarArray>(createArray);
-  const [speed, setSpeed] = useState(200);
+  const [method, setMethod] = useState("");
+  const [speed, setSpeed] = useState(100);
 
   function sort() {
     let result: ResultArray = [];
-    result = selectionSort(array);
-    // results = quickSort(array);
-    // results = mergeSort(array);
+
+    switch (method) {
+      case "Selection":
+        result = selectionSort(array);
+      case "Quick":
+        result = quickSort(array);
+      default:
+    }
+
     for (let i = 0; i < result.length; i++) {
       setTimeout(() => {
         setArray(result[i]);
@@ -52,14 +59,28 @@ export default function Sorting() {
           </motion.div>
         ))}
       </section>
-      <button className="button" onClick={sort}>
-        Sort
+      <button
+        className="button"
+        onClick={() => {
+          setMethod("Selection");
+          sort();
+        }}
+      >
+        Selection Sort
       </button>
+      <button
+        className="button"
+        onClick={() => {
+          setMethod("Quick");
+          sort();
+        }}
+      >
+        Quick Sort
+      </button>
+      {/* <button onClick={}>Quick Sort</button> */}
       <button className="button" onClick={() => location.reload()}>
         Reload
       </button>
-      {/* <button onClick={}>Selection Sort</button> */}
-      {/* <button onClick={}>Quick Sort</button> */}
     </main>
   );
 }
