@@ -1,11 +1,41 @@
 .home-container {
   height: 100%;
   display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.home-item {
+  margin: 1rem;
+}
+
+.technology-container {
+  text-align: center;
+}
+
+.algorithm-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.algorithm-item {
+  margin: 5rem;
+  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
-.home-item {
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
   margin: 1rem;
 }
