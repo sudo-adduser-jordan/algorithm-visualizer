@@ -28,11 +28,11 @@ export default function Home() {
         <section className="technology-container">
           Technologies
           <div className="image-container">
-            <img src={react} alt="" style={{ width: "5rem", height: "5rem" }} />
-            <img src={typescript} alt="" style={{ width: "5rem", height: "5rem" }} />
-            <img src={esbuild} alt="" style={{ width: "5rem", height: "5rem" }} />
-            <img src={eslint} alt="" style={{ width: "5rem", height: "5rem" }} />
-            <img src={prettier} alt="" style={{ width: "5rem", height: "5rem" }} />
+            <img src={react} alt="" style={{ width: "3rem", height: "3rem" }} />
+            <img src={typescript} alt="" style={{ width: "3rem", height: "3rem" }} />
+            <img src={esbuild} alt="" style={{ width: "3rem", height: "3rem" }} />
+            <img src={eslint} alt="" style={{ width: "3rem", height: "3rem" }} />
+            <img src={prettier} alt="" style={{ width: "3rem", height: "3rem" }} />
           </div>
         </section>
       </main>
