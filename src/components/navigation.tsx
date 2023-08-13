@@ -18,6 +18,7 @@ export default function Navigation() {
           </div>
           <Link
             to={"https://github.com/sudo-adduser-jordan/Algorithm-Visualizer"}
+            target="_blank"
             className="right-container"
           >
             <FaGithub className="icon" size={25} />
