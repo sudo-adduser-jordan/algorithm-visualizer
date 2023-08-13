@@ -1,6 +1,4 @@
-import React, { Component } from "react";
-
-import "./Node.css";
+import "./node.css";
 
 type NodeProps = {
   row: number;

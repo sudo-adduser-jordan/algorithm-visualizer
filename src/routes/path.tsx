@@ -1,5 +1,5 @@
-import { useState } from "react";
 import "./path.css";
+import { useState } from "react";
 import Node from "../components/node";
 
 function createNode(column: number, row: number) {
