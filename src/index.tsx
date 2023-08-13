@@ -1,11 +1,21 @@
 import "./index.css";
 import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import App from "./app";
+import ReactDOM from "react-dom/client";
+import { HashRouter, Routes, Route } from "react-router-dom";
+import Navigation from "./components/navigation";
+import Home from "./routes/home";
+import Sort from "./routes/sort";
+import Path from "./routes/path";
 
-const root = createRoot(document.getElementById("root") as HTMLElement);
-root.render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <StrictMode>
-    <App />
+    <HashRouter>
+      <Navigation />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="sort" element={<Sort />} />
+        <Route path="path" element={<Path />} />
+      </Routes>
+    </HashRouter>
   </StrictMode>
 );

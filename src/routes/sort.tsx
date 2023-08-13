@@ -8,8 +8,7 @@ import { selectionSort } from "../lib/sort/selection-sort";
 import { quickSort } from "../lib/sort/quick-sort";
 import { bubbleSort } from "../lib/sort/bubble-sort";
 
-import Navigation from "./navigation";
-import Button from "./button";
+import Button from "../components/button";
 
 function createArray() {
   const array: BarArray = [];
@@ -23,7 +22,7 @@ function createArray() {
   return array;
 }
 
-export default function Sorting() {
+export default function Sort() {
   const [array, setArray] = useState<BarArray>(createArray);
   // const [speed, setSpeed] = useState(100);
   const [speed] = useState(100);

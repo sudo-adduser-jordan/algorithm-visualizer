@@ -1,24 +1,46 @@
 import "./navigation.css";
 import { LuBarChart3 } from "react-icons/lu";
-
-// type NavigationProps = {
-//   data: string[];
-//   title: string;
-//   menu: {
-//     items: string[];
-//   };
-// };
+import { RiRoadMapLine } from "react-icons/ri";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Navigation() {
-  return (
-    <section className="navigation-container">
-      <div className="title">
-        <LuBarChart3 className="icon" size={25} />
-        <div>Sorting Algorithms</div>
-      </div>
-      <div className="item">Home</div>
-      <div className="item">Randomize</div>
-      {/* <div>Path Algorithms</div> */}
-    </section>
-  );
+  const location = useLocation();
+  console.log(location.pathname.replace("/", ""));
+
+  const route = location.pathname.replace("/", "");
+  switch (route) {
+    case "":
+      return (
+        <section className="navigation-container">
+          <div className="title">
+            <div>Algorithm Visualizer</div>
+          </div>
+        </section>
+      );
+    case "sort":
+      return (
+        <section className="navigation-container">
+          <div className="title">
+            <LuBarChart3 className="icon" size={25} />
+            <div>Sorting Algorithms</div>
+          </div>
+          <Link to={`/`} className="item">
+            Home
+          </Link>
+          <div className="item">Randomize</div>
+        </section>
+      );
+    case "path":
+      return (
+        <section className="navigation-container">
+          <div className="title">
+            <RiRoadMapLine className="icon" size={25} />
+            <div style={{ paddingLeft: "5px" }}>Path Finding Algorithms</div>
+          </div>
+          <Link to={`/`} className="item">
+            Home
+          </Link>
+        </section>
+      );
+  }
 }
