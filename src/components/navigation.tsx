@@ -6,9 +6,8 @@ import { FaGithub } from "react-icons/fa6";
 
 export default function Navigation() {
   const location = useLocation();
-  console.log(location.pathname.replace("/", ""));
-
   const route = location.pathname.replace("/", "");
+
   switch (route) {
     case "":
       return (
