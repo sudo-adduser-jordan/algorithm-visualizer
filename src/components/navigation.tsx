@@ -25,6 +25,7 @@ export default function Navigation() {
           </Link>
         </section>
       );
+
     case "sort":
       return (
         <section className="navigation-container">
@@ -35,9 +36,16 @@ export default function Navigation() {
           <Link to={`/`} className="item">
             Home
           </Link>
-          <div className="item">Randomize</div>
+          <Link
+            to={"https://github.com/sudo-adduser-jordan/Algorithm-Visualizer"}
+            target="_blank"
+            className="right-container"
+          >
+            <FaGithub className="icon" size={25} />
+          </Link>
         </section>
       );
+
     case "path":
       return (
         <section className="navigation-container">
@@ -47,6 +55,13 @@ export default function Navigation() {
           </div>
           <Link to={`/`} className="item">
             Home
+          </Link>
+          <Link
+            to={"https://github.com/sudo-adduser-jordan/Algorithm-Visualizer"}
+            target="_blank"
+            className="right-container"
+          >
+            <FaGithub className="icon" size={25} />
           </Link>
         </section>
       );
