@@ -25,7 +25,6 @@
 
 .item:hover {
   background: rgba(152, 152, 152, 0.3);
-  color: pink;
   cursor: pointer;
 }
 
