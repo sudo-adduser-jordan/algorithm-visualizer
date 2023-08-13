@@ -28,3 +28,16 @@
   color: pink;
   cursor: pointer;
 }
+
+.right-container {
+  margin-left: auto;
+  width: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-container:hover {
+  background: rgba(152, 152, 152, 0.3);
+  cursor: pointer;
+}

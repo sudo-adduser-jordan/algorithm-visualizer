@@ -1,7 +1,8 @@
 import "./navigation.css";
+import { Link, useLocation } from "react-router-dom";
 import { LuBarChart3 } from "react-icons/lu";
 import { RiRoadMapLine } from "react-icons/ri";
-import { Link, useLocation } from "react-router-dom";
+import { FaGithub } from "react-icons/fa6";
 
 export default function Navigation() {
   const location = useLocation();
@@ -15,6 +16,12 @@ export default function Navigation() {
           <div className="title">
             <div>Algorithm Visualizer</div>
           </div>
+          <Link
+            to={"https://github.com/sudo-adduser-jordan/Algorithm-Visualizer"}
+            className="right-container"
+          >
+            <FaGithub className="icon" size={25} />
+          </Link>
         </section>
       );
     case "sort":
