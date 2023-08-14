@@ -58,6 +58,8 @@ export default function Path() {
     return newMatrix;
   }
 
+  function reload() {}
+
   return (
     <main className="path-container">
       <section className="legend-container">
@@ -96,6 +98,39 @@ export default function Path() {
           );
         })}
       </section>
+      <section className="button-container">
+        <Button label="Dijkstra's" method="Dijkstra's" find={undefined} />
+        <Button label="A*" method="A*" find={undefined} />
+        <Button label="Reload" method="Reload" reload={undefined} />
+        <button className="button" onClick={() => setMatrix(createMatrix())}>
+          Clear
+        </button>
+      </section>
     </main>
+  );
+}
+
+type ButtonProps = {
+  label: string;
+  method: string;
+  reload?: (method: string) => void;
+  find?: (method: string) => void;
+};
+
+export function Button({ label, method, reload, find }: ButtonProps) {
+  return (
+    <button
+      className="button"
+      onClick={() => {
+        if (reload) {
+          reload(method);
+        }
+        if (find) {
+          find(method);
+        }
+      }}
+    >
+      {label}
+    </button>
   );
 }
