@@ -15,7 +15,8 @@
     "quotes": ["error", "double", { "allowTemplateLiterals": true }],
     "react/react-in-jsx-scope": "off",
     "jsx-a11y/anchor-is-valid": "off",
-    "no-unused-vars": "warn",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["error"],
     "@typescript-eslint/no-empty-interface": "warn",
 
     "import/extensions": 0,
