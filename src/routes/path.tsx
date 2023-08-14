@@ -13,9 +13,10 @@ export default function Path() {
 
   function createMatrix() {
     const matrix: Matrix = [];
-    for (let row = 0; row < 50; row++) {
+    for (let row = 0; row < 75; row++) {
       const currentRow: RowArray = [];
       for (let column = 0; column < 30; column++) {
+        // add variable size depending on window size
         currentRow.push(
           <Node
             column={column}
