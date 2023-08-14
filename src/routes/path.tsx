@@ -2,15 +2,16 @@ import "./path.css";
 import { useState } from "react";
 import Node from "../components/node";
 import { motion } from "framer-motion";
+import { VscDebugStart, VscDebugStop } from "react-icons/vsc";
 
 type Matrix = RowArray[];
 type RowArray = React.JSX.Element[];
 
 export default function Path() {
-  const [matrix, setMatrix] = useState<Matrix>(createGrid());
+  const [matrix, setMatrix] = useState<Matrix>(createMatrix());
   const [mouseIsPressed, setMousePresed] = useState(false);
 
-  function createGrid() {
+  function createMatrix() {
     const matrix: Matrix = [];
     for (let row = 0; row < 50; row++) {
       const currentRow: RowArray = [];
@@ -59,6 +60,20 @@ export default function Path() {
 
   return (
     <main className="path-container">
+      <section className="legend-container">
+        <div className="legend-item">
+          Wall = <div className="legend-wall"></div>
+        </div>
+        <div className="legend-item">
+          Path = <div className="legend-path"></div>
+        </div>
+        <div className="legend-item">
+          Start = <VscDebugStart size={25} />
+        </div>
+        <div className="legend-item">
+          End = <VscDebugStop size={25} />
+        </div>
+      </section>
       <section className="grid-container">
         {matrix.map((row, rowIndex) => {
           return (
