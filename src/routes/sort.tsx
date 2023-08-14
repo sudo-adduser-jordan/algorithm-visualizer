@@ -10,22 +10,21 @@ import { bubbleSort } from "../lib/sort/bubble-sort";
 
 import Button from "../components/button";
 
-function createArray() {
-  const array: BarArray = [];
-  for (let i = 0; i < 16; i++) {
-    array.push({
-      value: i,
-      backgroundColor: "var(--default-bar)",
-    });
-  }
-  shuffleArray(array);
-  return array;
-}
-
 export default function Sort() {
   const [array, setArray] = useState<BarArray>(createArray);
-  // const [speed, setSpeed] = useState(100);
   const [speed] = useState(100);
+
+  function createArray() {
+    const array: BarArray = [];
+    for (let i = 0; i < 16; i++) {
+      array.push({
+        value: i,
+        backgroundColor: "var(--default-bar)",
+      });
+    }
+    shuffleArray(array);
+    return array;
+  }
 
   function sort(method: string) {
     let result: ResultArray = [];
@@ -73,8 +72,8 @@ export default function Sort() {
         <Button label="Selection Sort" method="Selection" sort={() => sort("Selection")} />
         <Button label="Bubble Sort" method="Bubble" sort={() => sort("Bubble")} />
         <Button label="Quick Sort" method="Quick" sort={() => sort("Quick")} />
-        <button className="button" onClick={() => location.reload()}>
-          Reload
+        <button className="button" onClick={() => setArray(createArray)}>
+          Randomize
         </button>
       </div>
     </main>
