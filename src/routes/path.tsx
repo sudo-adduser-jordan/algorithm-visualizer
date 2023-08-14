@@ -101,7 +101,6 @@ export default function Path() {
       <section className="button-container">
         <Button label="Dijkstra's" method="Dijkstra's" find={undefined} />
         <Button label="A*" method="A*" find={undefined} />
-        <Button label="Reload" method="Reload" reload={undefined} />
         <button className="button" onClick={() => setMatrix(createMatrix())}>
           Clear
         </button>
