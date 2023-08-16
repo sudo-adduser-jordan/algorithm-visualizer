@@ -120,7 +120,7 @@ export default function Path() {
             setMatrix(createMatrix());
           }}
         >
-          Clear
+          Randomize
         </button>
       </section>
     </main>
