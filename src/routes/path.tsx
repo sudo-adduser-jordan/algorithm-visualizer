@@ -12,34 +12,24 @@ function getRandomInt(max: number) {
   return Math.floor(Math.random() * max);
 }
 
-let START_NODE_ROW = getRandomInt(10);
-let START_NODE_COL = getRandomInt(10);
-let FINISH_NODE_ROW = getRandomInt(10);
-let FINISH_NODE_COL = getRandomInt(10);
-
 export default function Path() {
+  const [start, setStart] = useState([0, 0]);
+  const [end, setEnd] = useState([1, 1]);
   const [matrix, setMatrix] = useState<Matrix>(createMatrix());
-  const [start, setStart] = useState(false);
-  const [end, setEnd] = useState(false);
   const [mouseIsPressed, setMousePresed] = useState(false);
 
-  // let START_NODE_ROW = getRandomInt(10);
-  // let START_NODE_COL = getRandomInt(10);
-  // let FINISH_NODE_ROW = getRandomInt(10);
-  // let FINISH_NODE_COL = getRandomInt(10);
   function createMatrix() {
     let matrix: Matrix = [];
     for (let row = 0; row < 75; row++) {
       const currentRow: RowArray = [];
       for (let column = 0; column < 30; column++) {
-        // add variable size depending on window size
         currentRow.push(
           <Node
             column={column}
             row={row}
             isWall={false}
-            isStart={row === START_NODE_ROW && column === START_NODE_COL}
-            isEnd={row === FINISH_NODE_ROW && column === FINISH_NODE_COL}
+            isStart={row === start[0] && column === start[1]}
+            isEnd={row === end[0] && column === end[1]}
             onMouseDown={(row, col) => handleMouseDown(row, col)}
             onMouseEnter={(row, col) => handleMouseEnter(row, col)}
             onMouseUp={() => handleMouseUp()}
@@ -99,15 +89,14 @@ export default function Path() {
             <motion.div key={rowIndex}>
               {row.map((node, nodeIndex) => {
                 const { row, column, isWall } = node.props;
-                // console.log(isWall);
                 return (
                   <Node
                     key={nodeIndex}
                     row={row}
                     column={column}
                     isWall={isWall}
-                    isStart={row === START_NODE_ROW && column === START_NODE_COL}
-                    isEnd={row === FINISH_NODE_ROW && column === FINISH_NODE_COL}
+                    isStart={row === start[0] && column === start[1]}
+                    isEnd={row === end[0] && column === end[1]}
                     onMouseDown={(row, column) => handleMouseDown(row, column)}
                     onMouseEnter={(row, column) => handleMouseEnter(row, column)}
                     onMouseUp={() => handleMouseUp()}
@@ -121,7 +110,16 @@ export default function Path() {
       <section className="button-container">
         <Button label="Dijkstra's" method="Dijkstra's" find={undefined} />
         <Button label="A*" method="A*" find={undefined} />
-        <button className="button" onClick={() => setMatrix(createMatrix())}>
+        <button
+          className="button"
+          onClick={() => {
+            const s = [getRandomInt(30), getRandomInt(15)];
+            const e = [getRandomInt(75), getRandomInt(30)];
+            setStart(s);
+            setEnd(e);
+            setMatrix(createMatrix());
+          }}
+        >
           Clear
         </button>
       </section>

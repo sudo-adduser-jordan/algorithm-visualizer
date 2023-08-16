@@ -10,7 +10,7 @@ const ctx = await esBuild.context({
     ".svg": "file",
   },
   bundle: true,
-  minify: true,
+  minify: false,
   sourcemap: true,
   // target: ["chrome58", "firefox57", "safari11", "edge16"],
   outdir: "./toolchain/dev/",
