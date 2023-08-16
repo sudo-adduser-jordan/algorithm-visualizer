@@ -7,12 +7,28 @@ import { VscDebugStart, VscDebugStop } from "react-icons/vsc";
 type Matrix = RowArray[];
 type RowArray = React.JSX.Element[];
 
+function getRandomInt(max: number) {
+  console.log(Math.floor(Math.random() * max));
+  return Math.floor(Math.random() * max);
+}
+
+let START_NODE_ROW = getRandomInt(10);
+let START_NODE_COL = getRandomInt(10);
+let FINISH_NODE_ROW = getRandomInt(10);
+let FINISH_NODE_COL = getRandomInt(10);
+
 export default function Path() {
   const [matrix, setMatrix] = useState<Matrix>(createMatrix());
+  const [start, setStart] = useState(false);
+  const [end, setEnd] = useState(false);
   const [mouseIsPressed, setMousePresed] = useState(false);
 
+  // let START_NODE_ROW = getRandomInt(10);
+  // let START_NODE_COL = getRandomInt(10);
+  // let FINISH_NODE_ROW = getRandomInt(10);
+  // let FINISH_NODE_COL = getRandomInt(10);
   function createMatrix() {
-    const matrix: Matrix = [];
+    let matrix: Matrix = [];
     for (let row = 0; row < 75; row++) {
       const currentRow: RowArray = [];
       for (let column = 0; column < 30; column++) {
@@ -21,7 +37,9 @@ export default function Path() {
           <Node
             column={column}
             row={row}
-            isWall={""}
+            isWall={false}
+            isStart={row === START_NODE_ROW && column === START_NODE_COL}
+            isEnd={row === FINISH_NODE_ROW && column === FINISH_NODE_COL}
             onMouseDown={(row, col) => handleMouseDown(row, col)}
             onMouseEnter={(row, col) => handleMouseEnter(row, col)}
             onMouseUp={() => handleMouseUp()}
@@ -51,15 +69,13 @@ export default function Path() {
 
   function getNewMatrix(matrix: Matrix, row: number, col: number): Matrix {
     const newMatrix = matrix.slice();
-    if (newMatrix[row][col].props.isWall === "wall") {
-      newMatrix[row][col].props.isWall = "";
-    } else if (newMatrix[row][col].props.isWall === "") {
-      newMatrix[row][col].props.isWall = "wall";
+    if (newMatrix[row][col].props.isWall === true) {
+      newMatrix[row][col].props.isWall = false;
+    } else if (newMatrix[row][col].props.isWall === false) {
+      newMatrix[row][col].props.isWall = true;
     }
     return newMatrix;
   }
-
-  function reload() {}
 
   return (
     <main className="path-container">
@@ -83,14 +99,17 @@ export default function Path() {
             <motion.div key={rowIndex}>
               {row.map((node, nodeIndex) => {
                 const { row, column, isWall } = node.props;
+                // console.log(isWall);
                 return (
                   <Node
                     key={nodeIndex}
                     row={row}
                     column={column}
                     isWall={isWall}
-                    onMouseDown={(row, col) => handleMouseDown(row, col)}
-                    onMouseEnter={(row, col) => handleMouseEnter(row, col)}
+                    isStart={row === START_NODE_ROW && column === START_NODE_COL}
+                    isEnd={row === FINISH_NODE_ROW && column === FINISH_NODE_COL}
+                    onMouseDown={(row, column) => handleMouseDown(row, column)}
+                    onMouseEnter={(row, column) => handleMouseEnter(row, column)}
                     onMouseUp={() => handleMouseUp()}
                   />
                 );
