@@ -13,8 +13,8 @@ function getRandomInt(max: number) {
 }
 
 export default function Path() {
-  const [start, setStart] = useState([0, 0]);
-  const [end, setEnd] = useState([1, 1]);
+  const [start, setStart] = useState([getRandomInt(30), getRandomInt(15)]);
+  const [end, setEnd] = useState([getRandomInt(75), getRandomInt(30)]);
   const [matrix, setMatrix] = useState<Matrix>(createMatrix());
   const [mouseIsPressed, setMousePresed] = useState(false);
 
@@ -113,10 +113,8 @@ export default function Path() {
         <button
           className="button"
           onClick={() => {
-            const s = [getRandomInt(30), getRandomInt(15)];
-            const e = [getRandomInt(75), getRandomInt(30)];
-            setStart(s);
-            setEnd(e);
+            setStart([getRandomInt(30), getRandomInt(15)]);
+            setEnd([getRandomInt(75), getRandomInt(30)]);
             setMatrix(createMatrix());
           }}
         >
