@@ -1,12 +1,12 @@
 * {
   box-sizing: border-box;
+  font-family: "JetBrains Mono";
 }
 
 html,
 body {
   margin: 0;
   height: 100%;
-  font-family: "Brush Script MT", cursive;
   background-color: black;
   color: white;
   /* background-color: #d9afd9;
@@ -22,4 +22,19 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* Jetbrains Fonts */
+/* jsDelivr */
+/* https://gist.github.com/Albert221/753d7f8955eeb6f5e50486fce048e39f */
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff2/JetBrainsMono-ExtraBold.woff2")
+      format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff/JetBrainsMono-ExtraBold.woff")
+      format("woff");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
 }

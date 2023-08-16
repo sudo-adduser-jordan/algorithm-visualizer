@@ -25,10 +25,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* border: solid 1px; */
   border-radius: 5px;
 }
 .algorithm-item:hover {
   background: rgba(152, 152, 152, 0.3);
+}
+
+.algorithm-title {
+  width: 50%;
+  /* background-color: aqua; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .technology-container {

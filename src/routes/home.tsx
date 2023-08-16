@@ -18,8 +18,10 @@ export default function Home() {
       <main className="home-container">
         <section className="algorithm-container">
           <Link to={`/sort`} className="algorithm-item">
-            <LuBarChart3 className="icon" size={25} />
-            Sorting
+            <div className="algorithm-title">
+              <LuBarChart3 className="icon" size={25} />
+              Sorting
+            </div>
             <img
               src={sort}
               alt=""
@@ -28,12 +30,15 @@ export default function Home() {
                 height: "10rem",
                 border: "solid 1px",
                 borderRadius: "5px",
+                borderColor: "mediumslateblue",
               }}
             />
           </Link>
           <Link to={`/path`} className="algorithm-item">
-            <RiRoadMapLine className="icon" size={25} />
-            Path Finding
+            <div className="algorithm-title">
+              <RiRoadMapLine className="icon" size={25} />
+              Path Finding
+            </div>
             <img
               src={path}
               alt=""
@@ -42,6 +47,7 @@ export default function Home() {
                 height: "10rem",
                 border: "solid 1px",
                 borderRadius: "5px",
+                borderColor: "mediumslateblue",
               }}
             />
           </Link>
