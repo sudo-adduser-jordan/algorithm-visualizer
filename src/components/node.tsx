@@ -14,16 +14,6 @@ type NodeProps = {
   onMouseLeave: (row: number, col: number) => void;
 };
 
-type NodeState = {
-  row: number;
-  col: number;
-  isWall: boolean;
-  isStart: boolean;
-  isEnd: boolean;
-  isVisited: boolean;
-  isShortestPath: boolean;
-};
-
 export default function Node(props: NodeProps) {
   const {
     row,
