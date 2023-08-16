@@ -1,4 +1,3 @@
-import React, { Component } from "react";
 import { VscDebugStart, VscDebugStop } from "react-icons/vsc";
 
 type NodeProps = {
@@ -25,48 +24,44 @@ type NodeState = {
   isShortestPath: boolean;
 };
 
-class Node extends Component<NodeProps, NodeState> {
-  constructor(props: NodeProps) {
-    super(props);
-  }
-  render() {
-    const {
-      row,
-      col,
-      isWall,
-      isStart,
-      isEnd,
-      isVisited,
-      isShortestPath,
-      onMouseDown,
-      onMouseEnter,
-      onMouseUp,
-      onMouseLeave,
-    } = this.props;
-    const cName = isStart
-      ? "start"
-      : isEnd
-      ? "end"
-      : isWall
-      ? "wall"
-      : isShortestPath
-      ? "path"
-      : isVisited
-      ? "visited"
-      : "";
-    return (
-      <td
-        className={"node_" + cName}
-        id={`node-${row}-${col}`}
-        onMouseDown={() => onMouseDown(row, col)}
-        onMouseEnter={() => onMouseEnter(row, col)}
-        onMouseUp={() => onMouseUp()}
-        onMouseLeave={() => onMouseLeave(row, col)}
-      >
-        {isStart && <VscDebugStart size={20} />}
-        {isEnd && <VscDebugStop size={20} />}
-      </td>
-    );
-  }
+export default function Node(props: NodeProps) {
+  const {
+    row,
+    col,
+    isWall,
+    isStart,
+    isEnd,
+    isVisited,
+    isShortestPath,
+    onMouseDown,
+    onMouseEnter,
+    onMouseUp,
+    onMouseLeave,
+  } = props;
+
+  const cName = isStart
+    ? "start"
+    : isEnd
+    ? "end"
+    : isWall
+    ? "wall"
+    : isShortestPath
+    ? "path"
+    : isVisited
+    ? "visited"
+    : "";
+
+  return (
+    <td
+      className={"node_" + cName}
+      id={`node-${row}-${col}`}
+      onMouseDown={() => onMouseDown(row, col)}
+      onMouseEnter={() => onMouseEnter(row, col)}
+      onMouseUp={() => onMouseUp()}
+      onMouseLeave={() => onMouseLeave(row, col)}
+    >
+      {isStart && <VscDebugStart size={20} />}
+      {isEnd && <VscDebugStop size={20} />}
+    </td>
+  );
 }
-export default Node;
