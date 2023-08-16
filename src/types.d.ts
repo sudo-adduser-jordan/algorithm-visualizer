@@ -8,7 +8,6 @@ export type Bar = {
 type Grid = RowArray[];
 type RowArray = N[];
 type N = {
-  value: number;
   row: number;
   column: number;
   isStart: boolean;
@@ -16,5 +15,6 @@ type N = {
   isVisited: boolean;
   isShortestPath: boolean;
   isWall: boolean;
-  style: string;
+  distance: number;
+  prevNode: N | null;
 };
