@@ -18,7 +18,7 @@
 
 .legend-wall {
   margin: 1rem;
-  border: 1px solid #5bc9b1;
+  border: 1px solid tomato;
   width: 25px;
   height: 25px;
   background-color: black;
@@ -26,7 +26,6 @@
 
 .legend-path {
   margin: 1rem;
-  border: 1px solid #5bc9b1;
   width: 25px;
   height: 25px;
   background-color: lime;
@@ -109,7 +108,7 @@ table {
   }
 }
 .node_path {
-  background-color: greenyellow;
+  background-color: lime;
   animation-name: path_anime;
   animation-duration: 2s;
   animation-timing-function: ease-out;
