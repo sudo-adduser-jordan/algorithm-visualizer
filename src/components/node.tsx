@@ -23,9 +23,6 @@ export default function Node({
   onMouseUp,
 }: NodeProps) {
   let wall = isWall ? "node-wall" : "";
-  if (isWall) {
-    wall = "node-wall";
-  }
   if (isStart) {
     wall = "";
   }
@@ -33,19 +30,17 @@ export default function Node({
     wall = "";
   }
 
-  const start = isStart ? `node-start` : "";
-  const end = isEnd ? "node-end" : "";
   return (
     <div
       id={`node-${row}-${column}`}
-      className={`node ${wall} ${start} ${end}`}
+      className={`node ${wall}`}
       onMouseDown={() => onMouseDown(row, column)}
       onMouseEnter={() => onMouseEnter(row, column)}
       onMouseUp={() => onMouseUp()}
       role="presentation"
     >
-      {start && <VscDebugStart size={20} />}
-      {end && <VscDebugStop size={20} />}
+      {isStart && <VscDebugStart size={20} />}
+      {isEnd && <VscDebugStop size={20} />}
     </div>
   );
 }

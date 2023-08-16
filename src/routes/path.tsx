@@ -8,7 +8,6 @@ type Matrix = RowArray[];
 type RowArray = React.JSX.Element[];
 
 function getRandomInt(max: number) {
-  console.log(Math.floor(Math.random() * max));
   return Math.floor(Math.random() * max);
 }
 
@@ -58,13 +57,15 @@ export default function Path() {
   }
 
   function getNewMatrix(matrix: Matrix, row: number, col: number): Matrix {
-    const newMatrix = matrix.slice();
-    if (newMatrix[row][col].props.isWall === true) {
-      newMatrix[row][col].props.isWall = false;
-    } else if (newMatrix[row][col].props.isWall === false) {
-      newMatrix[row][col].props.isWall = true;
+    if (matrix[row][col].props.isWall === true) {
+      matrix[row][col].props.isWall = false;
+      return matrix;
     }
-    return newMatrix;
+    if (matrix[row][col].props.isWall === false) {
+      matrix[row][col].props.isWall = true;
+      return matrix;
+    }
+    return matrix;
   }
 
   return (
