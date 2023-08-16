@@ -20,10 +20,15 @@
 
 .algorithm-item {
   margin: 5rem;
+  padding: 1rem;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
+}
+.algorithm-item:hover {
+  background: rgba(152, 152, 152, 0.3);
 }
 
 .technology-container {

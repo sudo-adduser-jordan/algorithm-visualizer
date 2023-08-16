@@ -2,13 +2,14 @@ import "./path.css";
 import React from "react";
 import Node from "../components/node";
 import { Grid, RowArray } from "../types";
-import Dijkstra from "../lib/path/dijkstra.js";
+import { dijkstra } from "../lib/path/dijkstra.js";
 import { VscDebugStart, VscDebugStop } from "react-icons/vsc";
 
-type PathProps = {};
+type PathProps = {
+  props: null;
+};
 
 type PathState = {
-  method: string;
   grid: RowArray[];
   mouseClicked: boolean;
   mainClicked: string;
@@ -16,16 +17,13 @@ type PathState = {
   endNode: number[];
   visited: number;
   shortestPath: number;
-  number_of_nodes: number;
-  showModal: boolean;
   animating: boolean;
 };
 
-class Path extends React.Component<PathProps, PathState> {
+export default class Path extends React.Component<PathProps, PathState> {
   constructor(props: PathProps) {
     super(props);
     this.state = {
-      method: "Algorithms",
       grid: [],
       mouseClicked: false,
       mainClicked: "",
@@ -33,8 +31,6 @@ class Path extends React.Component<PathProps, PathState> {
       endNode: [],
       visited: 0,
       shortestPath: 0,
-      number_of_nodes: 0,
-      showModal: true,
       animating: false,
     };
   }
@@ -44,11 +40,11 @@ class Path extends React.Component<PathProps, PathState> {
       return;
     }
     const row_size = Math.floor((window.innerHeight - 60) / 40);
-    const col_size = Math.floor(window.innerWidth / 40);
+    const column_size = Math.floor(window.innerWidth / 40);
     const grid: Grid = [];
     for (let i = 0; i < row_size; i++) {
       const row: RowArray = [];
-      for (let j = 0; j < col_size; j++) {
+      for (let j = 0; j < column_size; j++) {
         row.push({
           row: i,
           column: j,
@@ -67,9 +63,9 @@ class Path extends React.Component<PathProps, PathState> {
       grid.push(row);
     }
     const start_x = Math.floor(Math.random() * row_size);
-    const start_y = Math.floor(Math.random() * col_size);
+    const start_y = Math.floor(Math.random() * column_size);
     const end_x = Math.floor(Math.random() * row_size);
-    const end_y = Math.floor(Math.random() * col_size);
+    const end_y = Math.floor(Math.random() * column_size);
     grid[start_x][start_y].isStart = true;
     grid[end_x][end_y].isEnd = true;
 
@@ -77,7 +73,6 @@ class Path extends React.Component<PathProps, PathState> {
       grid: grid,
       startNode: [start_x, start_y],
       endNode: [end_x, end_y],
-      number_of_nodes: grid.length * grid[0].length,
       visited: 0,
       shortestPath: 0,
     });
@@ -88,46 +83,50 @@ class Path extends React.Component<PathProps, PathState> {
       this.makeGrid();
     });
   }
-  handleMouseDown = (row: number, col: number) => {
+  handleMouseDown = (row: number, column: number) => {
     if (this.state.animating) return;
     const grid = this.state.grid;
-    if (grid[row][col].isStart) {
+    if (grid[row][column].isStart) {
       this.setState({
         mainClicked: "start",
       });
-    } else if (grid[row][col].isEnd) {
+    } else if (grid[row][column].isEnd) {
       this.setState({
         mainClicked: "end",
       });
     }
-    if (!grid[row][col].isWall && !grid[row][col].isStart && !grid[row][col].isEnd)
-      grid[row][col].isWall = true;
-    else if (grid[row][col].isWall) {
-      grid[row][col].isWall = false;
+    if (!grid[row][column].isWall && !grid[row][column].isStart && !grid[row][column].isEnd)
+      grid[row][column].isWall = true;
+    else if (grid[row][column].isWall) {
+      grid[row][column].isWall = false;
     }
     this.setState({
       grid: grid,
       mouseClicked: true,
     });
   };
-  handleMouseEnter = (row: number, col: number) => {
+  handleMouseEnter = (row: number, column: number) => {
     if (this.state.animating) return;
     if (this.state.mouseClicked) {
       const grid = this.state.grid;
       if (this.state.mainClicked == "start") {
-        grid[row][col].isStart = true;
+        grid[row][column].isStart = true;
         this.setState({
-          startNode: [row, col],
+          startNode: [row, column],
         });
       } else if (this.state.mainClicked == "end") {
-        grid[row][col].isEnd = true;
+        grid[row][column].isEnd = true;
         this.setState({
-          endNode: [row, col],
+          endNode: [row, column],
         });
-      } else if (!grid[row][col].isWall && !grid[row][col].isStart && !grid[row][col].isEnd)
-        grid[row][col].isWall = true;
-      else if (grid[row][col].isWall) {
-        grid[row][col].isWall = false;
+      } else if (
+        !grid[row][column].isWall &&
+        !grid[row][column].isStart &&
+        !grid[row][column].isEnd
+      )
+        grid[row][column].isWall = true;
+      else if (grid[row][column].isWall) {
+        grid[row][column].isWall = false;
       }
       this.setState({
         grid: grid,
@@ -135,12 +134,12 @@ class Path extends React.Component<PathProps, PathState> {
       });
     }
   };
-  handleMouseLeave = (row: number, col: number) => {
+  handleMouseLeave = (row: number, column: number) => {
     if (this.state.animating) return;
     const grid = this.state.grid;
     if (this.state.mainClicked != "") {
-      grid[row][col].isStart = false;
-      grid[row][col].isEnd = false;
+      grid[row][column].isStart = false;
+      grid[row][column].isEnd = false;
       this.setState({
         grid: grid,
       });
@@ -156,8 +155,7 @@ class Path extends React.Component<PathProps, PathState> {
   isInsideGrid = (i: number, j: number) => {
     return i >= 0 && i < this.state.grid.length && j >= 0 && j < this.state.grid[0].length;
   };
-  dijkshtra = (e: any) => {
-    e.preventDefault();
+  dijkshtra = () => {
     if (this.state.animating) return;
     const grid = this.state.grid;
     for (let i = 0; i < grid.length; i++) {
@@ -170,7 +168,7 @@ class Path extends React.Component<PathProps, PathState> {
       }
     }
 
-    const { visited_nodes, shortestPath } = Dijkstra(
+    const { visited_nodes, shortestPath } = dijkstra(
       this.state.grid,
       this.state.startNode,
       this.state.endNode
@@ -186,9 +184,6 @@ class Path extends React.Component<PathProps, PathState> {
           return;
         }
         grid[visited_nodes[i].row][visited_nodes[i].column].isVisited = true;
-        this.setState({
-          grid: grid,
-        });
         if (
           !grid[visited_nodes[i].row][visited_nodes[i].column].isStart &&
           !grid[visited_nodes[i].row][visited_nodes[i].column].isEnd
@@ -200,9 +195,8 @@ class Path extends React.Component<PathProps, PathState> {
           ).className = "node_visited";
         ++i;
         requestAnimationFrame(animateVisited);
-        setTimeout(() => {
-          console.log("hit");
-        }, 1000 / 1000);
+        // setTimeout(() => {
+        // }, 1000 / 1000);
       };
 
       const animatePath = () => {
@@ -235,12 +229,6 @@ class Path extends React.Component<PathProps, PathState> {
     animate();
   };
 
-  componentDidUpdate() {
-    const method = this.state.method;
-    if (method != "Algorithms") {
-      // document.getElementById("info-btn").style.display = "block";
-    }
-  }
   render() {
     return (
       <main className="main-container">
@@ -267,16 +255,22 @@ class Path extends React.Component<PathProps, PathState> {
                   return (
                     <Node
                       row={index}
-                      col={i}
+                      column={i}
                       isWall={element.isWall}
                       isStart={element.isStart}
                       isEnd={element.isEnd}
                       isVisited={element.isVisited}
                       isShortestPath={element.isShortestPath}
-                      onMouseDown={(row: number, col: number) => this.handleMouseDown(row, col)}
-                      onMouseEnter={(row: number, col: number) => this.handleMouseEnter(row, col)}
+                      onMouseDown={(row: number, column: number) =>
+                        this.handleMouseDown(row, column)
+                      }
+                      onMouseEnter={(row: number, column: number) =>
+                        this.handleMouseEnter(row, column)
+                      }
                       onMouseUp={() => this.handleMouseUp()}
-                      onMouseLeave={(row: number, col: number) => this.handleMouseLeave(row, col)}
+                      onMouseLeave={(row: number, column: number) =>
+                        this.handleMouseLeave(row, column)
+                      }
                     />
                   );
                 })}
@@ -284,9 +278,13 @@ class Path extends React.Component<PathProps, PathState> {
             );
           })}
         </table>
-        <button onClick={this.dijkshtra}>Find Path</button>
+        <section className="button-container">
+          <button onClick={this.dijkshtra}>Dijkshtra</button>
+          <button className="button" onClick={() => this.makeGrid()}>
+            Randomize
+          </button>
+        </section>
       </main>
     );
   }
 }
-export default Path;

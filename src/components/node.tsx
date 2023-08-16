@@ -2,22 +2,22 @@ import { VscDebugStart, VscDebugStop } from "react-icons/vsc";
 
 type NodeProps = {
   row: number;
-  col: number;
+  column: number;
   isWall: boolean;
   isStart: boolean;
   isEnd: boolean;
   isVisited: boolean;
   isShortestPath: boolean;
-  onMouseDown: (row: number, col: number) => void;
-  onMouseEnter: (row: number, col: number) => void;
+  onMouseDown: (row: number, column: number) => void;
+  onMouseEnter: (row: number, column: number) => void;
   onMouseUp: () => void;
-  onMouseLeave: (row: number, col: number) => void;
+  onMouseLeave: (row: number, column: number) => void;
 };
 
 export default function Node(props: NodeProps) {
   const {
     row,
-    col,
+    column,
     isWall,
     isStart,
     isEnd,
@@ -44,11 +44,11 @@ export default function Node(props: NodeProps) {
   return (
     <td
       className={"node_" + cName}
-      id={`node-${row}-${col}`}
-      onMouseDown={() => onMouseDown(row, col)}
-      onMouseEnter={() => onMouseEnter(row, col)}
+      id={`node-${row}-${column}`}
+      onMouseDown={() => onMouseDown(row, column)}
+      onMouseEnter={() => onMouseEnter(row, column)}
       onMouseUp={() => onMouseUp()}
-      onMouseLeave={() => onMouseLeave(row, col)}
+      onMouseLeave={() => onMouseLeave(row, column)}
     >
       {isStart && <VscDebugStart size={20} />}
       {isEnd && <VscDebugStop size={20} />}

@@ -31,6 +31,14 @@
   height: 25px;
   background-color: lime;
 }
+.button-container {
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.path-button {
+}
 
 td {
   border: 1px solid #5bc9b1;

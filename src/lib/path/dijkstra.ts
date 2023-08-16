@@ -1,11 +1,7 @@
 import PriorityQueue from "ts-priority-queue";
 import { Grid, N, RowArray } from "../../types";
 
-function isInsideGrid(grid: Grid, i: number, j: number) {
-  return i >= 0 && i < grid.length && j >= 0 && j < grid[0].length;
-}
-
-const dijkstra = (grid: Grid, startNode: number[], endNode: number[]) => {
+export const dijkstra = (grid: Grid, startNode: number[], endNode: number[]) => {
   console.log("hit");
   const visited_nodes: RowArray = [];
   const shortestPath: RowArray = [];
@@ -68,4 +64,7 @@ const dijkstra = (grid: Grid, startNode: number[], endNode: number[]) => {
   }
   return { visited_nodes, shortestPath };
 };
-export default dijkstra;
+
+function isInsideGrid(grid: Grid, i: number, j: number) {
+  return i >= 0 && i < grid.length && j >= 0 && j < grid[0].length;
+}

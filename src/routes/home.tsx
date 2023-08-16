@@ -9,20 +9,42 @@ import typescript from "../assets/typescript.png";
 import esbuild from "../assets/esbuild.png";
 import eslint from "../assets/eslint.png";
 import prettier from "../assets/prettier.png";
+import sort from "../assets/sort.png";
+import path from "../assets/path.png";
 
 export default function Home() {
   return (
     <>
       <main className="home-container">
         <section className="algorithm-container">
-          <div className="algorithm-item">
+          <Link to={`/sort`} className="algorithm-item">
             <LuBarChart3 className="icon" size={25} />
-            <Link to={`/sort`}>Sorting</Link>
-          </div>
-          <div className="algorithm-item">
+            Sorting
+            <img
+              src={sort}
+              alt=""
+              style={{
+                width: "20rem",
+                height: "10rem",
+                border: "solid 1px",
+                borderRadius: "5px",
+              }}
+            />
+          </Link>
+          <Link to={`/path`} className="algorithm-item">
             <RiRoadMapLine className="icon" size={25} />
-            <Link to={`/path`}>Path Finding</Link>
-          </div>
+            Path Finding
+            <img
+              src={path}
+              alt=""
+              style={{
+                width: "20rem",
+                height: "10rem",
+                border: "solid 1px",
+                borderRadius: "5px",
+              }}
+            />
+          </Link>
         </section>
 
         <section className="technology-container">
