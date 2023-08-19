@@ -1,7 +1,11 @@
-.main-container {
-  /* margin: 5rem; */
-  /* padding: 1rem; */
+.path-container {
+  min-height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
 .legend-container {
   display: flex;
   flex-direction: row;
@@ -10,7 +14,6 @@
 }
 
 .legend-item {
-  margin: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,13 +32,11 @@
   height: 25px;
   background-color: lime;
 }
+
 .button-container {
-  margin: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.path-button {
 }
 
 td {
@@ -43,11 +44,7 @@ td {
   width: 25px;
   height: 25px;
 }
-tr {
-  /* display: table-row; */
-  /* vertical-align: inherit; */
-  /* border-color: inherit; */
-}
+
 table {
   margin: 1rem;
   background-color: black;
@@ -55,15 +52,12 @@ table {
   border-radius: 5px;
 }
 .node_start {
-  /* background: url("../assets/space-ship.svg"); */
   background-size: cover;
 }
 .node_end {
-  /* background: url("../assets/planet.svg"); */
   background-size: cover;
 }
 .node_wall {
-  /* background: url("../assets/asteroid.svg"); */
   animation: pulse 0.5s 1;
   background-color: tomato;
   border: 1px solid tomato;
@@ -78,7 +72,6 @@ table {
   }
 }
 .node_visited {
-  /* background-color: lightseagreen; */
   background-color: mediumslateblue;
   animation-name: visited;
   animation-duration: 1.2s;
@@ -113,7 +106,6 @@ table {
   animation-timing-function: ease-out;
   animation-delay: 0;
   animation-direction: alternate;
-  /* animation-iteration-count: infinite; */
   animation-fill-mode: none;
   animation-play-state: running;
 }

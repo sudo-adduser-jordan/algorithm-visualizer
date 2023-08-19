@@ -4,6 +4,7 @@ import Node from "../components/node";
 import { Grid, N, RowArray } from "../types";
 import { dijkstra } from "../lib/path/dijkstra.js";
 import { VscDebugStart, VscDebugStop } from "react-icons/vsc";
+import Button from "../components/button";
 
 export default function Path() {
   const [grid, setGrid] = useState<Grid>([]);
@@ -178,7 +179,7 @@ export default function Path() {
   }
 
   return (
-    <main className="main-container">
+    <main className="path-container">
       <section className="legend-container">
         <div className="legend-item">
           Wall = <div className="legend-wall" />
@@ -222,10 +223,10 @@ export default function Path() {
       </table>
 
       <section className="button-container">
-        <button onClick={find}>Dijkshtra</button>
-        <button
-          className="button"
-          onClick={() => {
+        <Button label="Dijkshtra" func={() => find()} />
+        <Button
+          label=" Randomize"
+          func={() => {
             for (let i = 0; i < grid.length; i++) {
               for (let j = 0; j < grid[0].length; j++) {
                 if ((document.getElementById(`node-${i}-${j}`) as Element).className == "node_path")
@@ -239,9 +240,7 @@ export default function Path() {
             }
             makeGrid();
           }}
-        >
-          Randomize
-        </button>
+        />
       </section>
     </main>
   );

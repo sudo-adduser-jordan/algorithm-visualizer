@@ -2,16 +2,15 @@ import "./button.css";
 
 type ButtonProps = {
   label: string;
-  method: string;
-  sort: (method: string) => void;
+  func: any;
 };
 
-export default function Button({ label, method, sort }: ButtonProps) {
+export default function Button({ label, func }: ButtonProps) {
   return (
     <button
       className="button"
       onClick={() => {
-        sort(method);
+        func();
       }}
     >
       {label}

@@ -51,7 +51,7 @@ export default function Sort() {
   }
 
   return (
-    <main className="main-container">
+    <main className="sort-container">
       <div className="bar-container">
         {array.map((element) => (
           <motion.div
@@ -69,9 +69,9 @@ export default function Sort() {
       </div>
 
       <div className="button-container">
-        <Button label="Selection Sort" method="Selection" sort={() => sort("Selection")} />
-        <Button label="Bubble Sort" method="Bubble" sort={() => sort("Bubble")} />
-        <Button label="Quick Sort" method="Quick" sort={() => sort("Quick")} />
+        <Button label="Selection Sort" func={() => sort("Selection")} />
+        <Button label="Bubble Sort" func={() => sort("Bubble")} />
+        <Button label="Quick Sort" func={() => sort("Quick")} />
         <button className="button" onClick={() => setArray(createArray)}>
           Randomize
         </button>
