@@ -1,3 +1,17 @@
 .button {
   margin: 1rem;
+  background-color: gray;
+  border: solid black 1px;
+  border-radius: 5px;
+  font: bold;
+  color: white;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.button:hover {
+  background-color: lime;
+  cursor: pointer;
+  /* color: black; */
 }

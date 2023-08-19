@@ -23,9 +23,14 @@
   padding-right: 1rem;
 }
 
+.icon:hover {
+  fill: lime;
+}
+
 .item:hover {
   background: rgba(152, 152, 152, 0.3);
   cursor: pointer;
+  color: lime;
 }
 
 .right-container {
