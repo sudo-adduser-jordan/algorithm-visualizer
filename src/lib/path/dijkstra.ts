@@ -1,13 +1,18 @@
 import PriorityQueue from "ts-priority-queue";
-import { Grid, N, RowArray } from "../../types";
+import { Grid, N } from "../../types";
 
-export const dijkstra = (grid: Grid, startNode: number[], endNode: number[]) => {
-  console.log("hit");
-  const visited_nodes: RowArray = [];
-  const shortestPath: RowArray = [];
-  const queue = new PriorityQueue({
-    comparator: function (a: any, b: any) {
-      return b - a;
+function isInsideGrid(grid: Grid, i: number, j: number) {
+  return i >= 0 && i < grid.length && j >= 0 && j < grid[0].length;
+}
+
+export const dijkstra = (grid: Grid, startNode: N, endNode: N) => {
+  const visited_nodes = [];
+  const shortestPath = [];
+  const start_node = startNode;
+  const end_node = endNode;
+  const pq = new PriorityQueue({
+    comparator: function (a: N, b: N) {
+      return a.distance - b.distance;
     },
   });
   for (let i = 0; i < grid.length; i++) {
@@ -18,16 +23,13 @@ export const dijkstra = (grid: Grid, startNode: number[], endNode: number[]) => 
       grid[i][j].isShortestPath = false;
     }
   }
-  grid[startNode[0]][startNode[1]].distance = 0;
-
-  queue.queue(grid[startNode[0]][startNode[1]]);
-
+  grid[start_node.row][start_node.column].distance = 0;
+  pq.queue(grid[start_node.row][start_node.column]);
   const dx = [1, 0, -1, 0];
   const dy = [0, 1, 0, -1];
 
-  while (queue.length) {
-    const cell: N = queue.dequeue();
-    console.log(cell);
+  while (pq.length) {
+    const cell = pq.dequeue();
     if (grid[cell.row][cell.column].isVisited) continue;
     grid[cell.row][cell.column].isVisited = true;
     visited_nodes.push(cell);
@@ -36,8 +38,11 @@ export const dijkstra = (grid: Grid, startNode: number[], endNode: number[]) => 
       const x = cell.row + dx[i];
       const y = cell.column + dy[i];
       if (!isInsideGrid(grid, x, y)) continue;
-      if (!grid[x][y].isVisited && (!grid[x][y].isWall || (x == endNode[0] && y == endNode[1]))) {
-        if (x === endNode[0] && y === endNode[1]) {
+      if (
+        !grid[x][y].isVisited &&
+        (!grid[x][y].isWall || (x == end_node.row && y == end_node.column))
+      ) {
+        if (x === end_node.row && y === end_node.column) {
           grid[x][y].isVisited = true;
           grid[x][y].prevNode = grid[cell.row][cell.column];
           let node = grid[x][y];
@@ -57,14 +62,10 @@ export const dijkstra = (grid: Grid, startNode: number[], endNode: number[]) => 
           grid[x][y].prevNode = cell;
           grid[x][y].distance = cell.distance + dist;
         }
-        queue.queue(grid[x][y]);
+        pq.queue(grid[x][y]);
       }
     }
     if (flag == 1) break;
   }
   return { visited_nodes, shortestPath };
 };
-
-function isInsideGrid(grid: Grid, i: number, j: number) {
-  return i >= 0 && i < grid.length && j >= 0 && j < grid[0].length;
-}

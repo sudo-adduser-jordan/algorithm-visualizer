@@ -18,10 +18,9 @@
 
 .legend-wall {
   margin: 1rem;
-  border: 1px solid tomato;
   width: 25px;
   height: 25px;
-  background-color: black;
+  background-color: tomato;
 }
 
 .legend-path {
@@ -45,9 +44,9 @@ td {
   height: 25px;
 }
 tr {
-  display: table-row;
-  vertical-align: inherit;
-  border-color: inherit;
+  /* display: table-row; */
+  /* vertical-align: inherit; */
+  /* border-color: inherit; */
 }
 table {
   margin: 1rem;
@@ -131,19 +130,5 @@ table {
   100% {
     transform: scale(1);
     background-color: yellow;
-  }
-}
-.chat-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-@keyframes shadow-pulse {
-  0% {
-    box-shadow: 0 0 0 0 #343a40;
-  }
-  100% {
-    box-shadow: 0 0 0 20px rgba(130, 90, 164, 0);
   }
 }
