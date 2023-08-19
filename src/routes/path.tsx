@@ -1,5 +1,5 @@
 import "./path.css";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Node from "../components/node";
 import { Grid, N, RowArray } from "../types";
 import { dijkstra } from "../lib/path/dijkstra.js";
@@ -56,8 +56,6 @@ export default function Path() {
     setGrid([...grid]);
     setStartNode(startNode);
     setEndNode(endNode);
-    // setVisited(0);
-    // setShortestPath(0);
   }
 
   function handleMouseDown(row: number, column: number) {
@@ -225,7 +223,23 @@ export default function Path() {
 
       <section className="button-container">
         <button onClick={find}>Dijkshtra</button>
-        <button className="button" onClick={() => makeGrid()}>
+        <button
+          className="button"
+          onClick={() => {
+            for (let i = 0; i < grid.length; i++) {
+              for (let j = 0; j < grid[0].length; j++) {
+                if ((document.getElementById(`node-${i}-${j}`) as Element).className == "node_path")
+                  (document.getElementById(`node-${i}-${j}`) as Element).className = "node_";
+                if (
+                  (document.getElementById(`node-${i}-${j}`) as Element).className == "node_visited"
+                ) {
+                  (document.getElementById(`node-${i}-${j}`) as Element).className = "node_";
+                }
+              }
+            }
+            makeGrid();
+          }}
+        >
           Randomize
         </button>
       </section>
