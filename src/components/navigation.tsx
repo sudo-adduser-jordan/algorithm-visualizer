@@ -1,7 +1,6 @@
 import "./navigation.css";
 import { Link, useLocation } from "react-router-dom";
 
-import { IconContext } from "react-icons";
 import { LuBarChart3 } from "react-icons/lu";
 import { RiRoadMapLine } from "react-icons/ri";
 import { FaGithub } from "react-icons/fa6";
