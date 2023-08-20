@@ -1,25 +1,6 @@
 version: "3.8"
 services:
-  # database
-  # database:
-  #   image: postgres
-  #   restart: always
-  #   env_file:
-  #     - .env
-  #   ports:
-  #     - ${DB_PORT}:${DB_PORT}
-  #   environment:
-  #     - POSTGRES_USER=${DB_USER}
-  #     - POSTGRES_PASSWORD=${DB_PASSWORD}
-  #     - POSTGRES_DB=${DB_NAME}
-  #   healthcheck:
-  #     test: pg_isready --version
-
-  # server
   server:
-    # depends_on:
-    #   database:
-    #     condition: service_healthy
     ports:
       - 8080:8080
     build: .
