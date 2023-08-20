@@ -1,0 +1,39 @@
+name: Node
+on:
+  push:
+    branches: ["main", "branch-1"]
+  pull_request:
+    branches: ["main", "branch-1"]
+env:
+  NODE_VERSION: 18.16.0
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Load Cache
+        uses: ./.github/actions/cache
+      - name: Lint Application
+        run: npm run lint
+  type-check:
+    name: Types
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Load Cache
+        uses: ./.github/actions/cache
+      - name: Check Application Types
+        run: npm run type
+  build:
+    name: Build
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Load Cache
+        uses: ./.github/actions/cache
+      - name: Build Application
+        run: npm run build
