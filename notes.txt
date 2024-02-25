@@ -7,3 +7,5 @@ var(--sorted-bar)
 var(--min-bar)
 var(--test-bar)
 var(--pivot-bar)
+
+# currently hosted via vercel with npm run build and config/

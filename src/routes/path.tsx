@@ -118,6 +118,7 @@ export default function Path() {
 
   function find() {
     if (animating) return;
+    setAnimating(true);
     for (let i = 0; i < grid.length; i++) {
       for (let j = 0; j < grid[0].length; j++) {
         if ((document.getElementById(`node-${i}-${j}`) as Element).className == "node_path")
@@ -127,71 +128,74 @@ export default function Path() {
         }
       }
     }
-
     const { visited_nodes, shortestPath } = dijkstra(grid, startNode as N, endNode as N);
-    function animate() {
-      setAnimating(true);
-      let i = 0;
-      let j = 0;
+    animate(visited_nodes, shortestPath);
+    setAnimating(false);
+  }
 
-      function animateVisited() {
-        if (i == visited_nodes.length) {
-          requestAnimationFrame(animatePath);
-          return;
-        }
-        const node = grid[visited_nodes[i].row][visited_nodes[i].column];
-        node.isVisited = true;
-        if (!node.isStart && !node.isEnd) {
-          (
-            document.getElementById(
-              `node-${visited_nodes[i].row}-${visited_nodes[i].column}`
-            ) as Element
-          ).className = "node_visited";
-        }
-        ++i;
-        requestAnimationFrame(animateVisited);
-      }
-
-      function animatePath() {
-        if (j == shortestPath.length) {
-          setGrid(grid);
-          setAnimating(false);
-          return;
-        }
-        const node = grid[shortestPath[j].row][shortestPath[j].column];
-        node.isShortestPath = true;
-        if (!node.isStart && !node.isEnd) {
-          (
-            document.getElementById(
-              `node-${shortestPath[j].row}-${shortestPath[j].column}`
-            ) as Element
-          ).className = "node_path";
-        }
-        ++j;
+  function animate(visited_nodes: N[], shortestPath: N[]) {
+    let i = 0;
+    function animateVisited() {
+      if (i == visited_nodes.length) {
         requestAnimationFrame(animatePath);
+        return;
       }
-
+      const node = grid[visited_nodes[i].row][visited_nodes[i].column];
+      node.isVisited = true;
+      if (!node.isStart && !node.isEnd) {
+        (
+          document.getElementById(
+            `node-${visited_nodes[i].row}-${visited_nodes[i].column}`
+          ) as Element
+        ).className = "node_visited";
+      }
+      ++i;
       requestAnimationFrame(animateVisited);
     }
 
-    animate();
-    setAnimating(false);
+    let j = 0;
+    function animatePath() {
+      if (j == shortestPath.length) {
+        setGrid(grid);
+        return;
+      }
+      const node = grid[shortestPath[j].row][shortestPath[j].column];
+      node.isShortestPath = true;
+      if (!node.isStart && !node.isEnd) {
+        (
+          document.getElementById(
+            `node-${shortestPath[j].row}-${shortestPath[j].column}`
+          ) as Element
+        ).className = "node_path";
+      }
+      ++j;
+      requestAnimationFrame(animatePath);
+    }
+
+    requestAnimationFrame(animateVisited);
   }
 
   return (
     <main className="path-container">
       <section className="legend-container">
         <div className="legend-item">
-          Wall = <div className="legend-wall" />
+          Wall =
+          <div className="legend-wall" />
         </div>
+
         <div className="legend-item">
-          Path = <div className="legend-path" />
+          Path =
+          <div className="legend-path" />
         </div>
-        <div>
-          Start = <VscDebugStart size={25} />
-        </div>
+
         <div className="legend-item">
-          End = <VscDebugStop size={25} />
+          Start =
+          <VscDebugStart size={25} />
+        </div>
+
+        <div className="legend-item">
+          End =
+          <VscDebugStop size={25} />
         </div>
       </section>
 
@@ -241,6 +245,10 @@ export default function Path() {
             makeGrid();
           }}
         />
+      </section>
+
+      <section className="instruction">
+        Click and drag to create walls and move start and end positions.
       </section>
     </main>
   );
