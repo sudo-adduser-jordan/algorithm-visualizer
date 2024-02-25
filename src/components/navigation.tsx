@@ -30,7 +30,7 @@ export default function Navigation() {
       return (
         <section className="navigation-container">
           <div className="title">
-            <LuBarChart3 className="icon" size={25} />
+            <LuBarChart3 className="icon" size={25} style={{ margin: "1rem" }} />
             <div>Sorting Algorithms</div>
           </div>
           <Link to={`/`} className="item">
@@ -50,7 +50,7 @@ export default function Navigation() {
       return (
         <section className="navigation-container">
           <div className="title">
-            <RiRoadMapLine className="icon" size={25} />
+            <RiRoadMapLine className="icon" size={25} style={{ margin: "1rem" }} />
             <div style={{ paddingLeft: "5px" }}>Path Finding Algorithms</div>
           </div>
           <Link to={`/`} className="item">

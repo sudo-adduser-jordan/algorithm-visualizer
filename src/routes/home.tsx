@@ -19,7 +19,7 @@ export default function Home() {
         <section className="algorithm-container">
           <Link to={`/sort`} className="algorithm-item">
             <div className="algorithm-title">
-              <LuBarChart3 className="icon" size={25} />
+              <LuBarChart3 size={25} style={{ margin: "1rem" }} />
               Sorting
             </div>
             <img
@@ -36,7 +36,7 @@ export default function Home() {
           </Link>
           <Link to={`/path`} className="algorithm-item">
             <div className="algorithm-title">
-              <RiRoadMapLine className="icon" size={25} />
+              <RiRoadMapLine size={25} style={{ margin: "1rem" }} />
               Path Finding
             </div>
             <img
