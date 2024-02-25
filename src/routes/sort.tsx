@@ -12,6 +12,7 @@ import Button from "../components/button";
 
 export default function Sort() {
   const [array, setArray] = useState<BarArray>(createArray);
+  const [animating, setAnimating] = useState(false);
   const [speed] = useState(100);
 
   function createArray() {
@@ -43,11 +44,17 @@ export default function Sort() {
         console.log(new Error());
     }
 
+    setAnimating(true);
     for (let i = 0; i < result.length; i++) {
       setTimeout(() => {
         setArray(result[i]);
       }, speed * i);
     }
+
+    // Enable buttons after sort
+    setTimeout(() => {
+      setAnimating(false);
+    }, speed * result.length);
   }
 
   return (
@@ -69,10 +76,37 @@ export default function Sort() {
       </div>
 
       <div className="button-container">
-        <Button label="Selection Sort" func={() => sort("Selection")} />
-        <Button label="Bubble Sort" func={() => sort("Bubble")} />
-        <Button label="Quick Sort" func={() => sort("Quick")} />
-        <button className="button" onClick={() => setArray(createArray)}>
+        <Button
+          label="Selection Sort"
+          func={() => {
+            if (animating) return;
+            sort("Selection");
+          }}
+        />
+
+        <Button
+          label="Bubble Sort"
+          func={() => {
+            if (animating) return;
+            sort("Bubble");
+          }}
+        />
+
+        <Button
+          label="Quick Sort"
+          func={() => {
+            if (animating) return;
+            sort("Quick");
+          }}
+        />
+
+        <button
+          className="button"
+          onClick={() => {
+            if (animating) return;
+            setArray(createArray);
+          }}
+        >
           Randomize
         </button>
       </div>
