@@ -12,7 +12,7 @@ export default function Path() {
   const [mainClicked, setMainClicked] = useState("");
   const [startNode, setStartNode] = useState<N>();
   const [endNode, setEndNode] = useState<N>();
-  const [animating, setAnimating] = useState(false);
+  let animating = false;
 
   useEffect(() => {
     makeGrid();
@@ -118,7 +118,6 @@ export default function Path() {
 
   function find() {
     if (animating) return;
-    setAnimating(true);
     for (let i = 0; i < grid.length; i++) {
       for (let j = 0; j < grid[0].length; j++) {
         if ((document.getElementById(`node-${i}-${j}`) as Element).className == "node_path")
@@ -128,12 +127,14 @@ export default function Path() {
         }
       }
     }
+
     const { visited_nodes, shortestPath } = dijkstra(grid, startNode as N, endNode as N);
     animate(visited_nodes, shortestPath);
-    setAnimating(false);
   }
 
   function animate(visited_nodes: N[], shortestPath: N[]) {
+    animating = true;
+
     let i = 0;
     function animateVisited() {
       if (i == visited_nodes.length) {
@@ -157,6 +158,7 @@ export default function Path() {
     function animatePath() {
       if (j == shortestPath.length) {
         setGrid(grid);
+        animating = false;
         return;
       }
       const node = grid[shortestPath[j].row][shortestPath[j].column];
@@ -231,6 +233,7 @@ export default function Path() {
         <Button
           label=" Randomize"
           func={() => {
+            if (animating) return;
             for (let i = 0; i < grid.length; i++) {
               for (let j = 0; j < grid[0].length; j++) {
                 if ((document.getElementById(`node-${i}-${j}`) as Element).className == "node_path")
