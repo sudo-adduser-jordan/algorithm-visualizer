@@ -1,4 +1,3 @@
-import { APP_URL } from "@/constants/URL";
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
@@ -143,7 +142,7 @@ export default function Image() {
             color: "#94a3b8",
           }}
         >
-          {APP_URL}
+          APP_URL
         </div>
       </div>
     ),

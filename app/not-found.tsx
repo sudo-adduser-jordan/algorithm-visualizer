@@ -1,9 +1,9 @@
 import Link from "next/link";
-import PageLayout from "@/components/layout/PageLayout";
+import Layout from "@/components/layout/Layout";
 
 export default function NotFound() {
   return (
-    <PageLayout title="Page Not Found">
+    <Layout title="Page Not Found">
       <div className="flex flex-col items-center justify-center py-12">
         <h2 className="text-4xl font-bold text-red-500 mb-4">404</h2>
         <p className="text-xl text-gray-600 mb-8">
@@ -24,6 +24,6 @@ export default function NotFound() {
           </Link>
         </div>
       </div>
-    </PageLayout>
+    </Layout>
   );
 }

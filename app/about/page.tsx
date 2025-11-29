@@ -1,4 +1,4 @@
-import PageLayout from "@/components/layout/PageLayout";
+import Layout from "@/components/layout/Layout";
 import Link from "next/link";
 import { availableAlgorithms } from "@/lib/algorithms/metadata";
 
@@ -52,7 +52,7 @@ export default function AboutPage() {
 
 
   return (
-    <PageLayout
+    <Layout
       title="About Algorithm Visualizer"
       subtitle="Interactive visualizations to help you understand how algorithms work step-by-step."
     >
@@ -163,6 +163,6 @@ export default function AboutPage() {
           </Link>
         </div>
       </div>
-    </PageLayout>
+    </Layout>
   )
 }

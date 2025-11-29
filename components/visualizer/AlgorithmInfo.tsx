@@ -45,7 +45,7 @@ export default function AlgorithmInfo({ algorithm }: AlgorithmInfoProps) {
             </Link>
           </div>
         </div>
-
+{/* 
         <div className="flex-1 min-w-[140px]">
           <h3 className="text-sm font-semibold text-gray-600 mb-2">
             Difficulty
@@ -58,7 +58,7 @@ export default function AlgorithmInfo({ algorithm }: AlgorithmInfoProps) {
               {algorithm.difficulty}
             </Link>
           </div>
-        </div>
+        </div> */}
 
         <div className="flex-1 min-w-[140px]">
           <h3 className="text-sm font-semibold text-gray-600 mb-2">

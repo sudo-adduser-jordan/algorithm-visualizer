@@ -1,4 +1,4 @@
-import PageLayout from "@/components/layout/PageLayout";
+import Layout from "@/components/layout/Layout";
 import AlgorithmCard from "@/components/AlgorithmCard";
 import { availableAlgorithms } from "@/lib/algorithms/metadata";
 
@@ -8,7 +8,7 @@ export default function GraphAlgorithms() {
   );
 
   return (
-    <PageLayout
+    <Layout
       title="Graph Algorithms"
       subtitle="Graph algorithms are procedures to search, detect cyles, or understand network cycles in node and vertex graphs."
     >
@@ -17,6 +17,6 @@ export default function GraphAlgorithms() {
           <AlgorithmCard key={algorithm[0]} algorithm={algorithm[1]} />
         ))}
       </div>
-    </PageLayout>
+    </Layout>
   );
 }

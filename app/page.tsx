@@ -1,4 +1,4 @@
-import PageLayout from "@/components/layout/PageLayout";
+import Layout from "@/components/layout/Layout";
 import AlgorithmCard from "@/components/AlgorithmCard";
 import { availableAlgorithms } from "@/lib/algorithms/metadata";
 import { AlgorithmInfo } from "@/lib/types";
@@ -18,7 +18,7 @@ export default function Home() {
   );
 
   return (
-    <PageLayout
+    <Layout
       title="Algorithm Visualizer"
       subtitle="Interactive visualizations to help you understand how algorithms work step-by-step."
     >
@@ -39,6 +39,6 @@ export default function Home() {
           </div>
         </section>
       ))}
-    </PageLayout>
+    </Layout>
   );
 }

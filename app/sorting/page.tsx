@@ -1,4 +1,4 @@
-import PageLayout from "@/components/layout/PageLayout";
+import Layout from "@/components/layout/Layout";
 import AlgorithmCard from "@/components/AlgorithmCard";
 import { availableAlgorithms } from "@/lib/algorithms/metadata";
 
@@ -9,7 +9,7 @@ export default function SortingAlgorithms() {
   );
 
   return (
-    <PageLayout
+    <Layout
       title="Sorting Algorithms"
       subtitle="Sorting algorithms are methods for reorganizing a sequence of items into a specific order, typically in ascending or descending order."
     >
@@ -18,6 +18,6 @@ export default function SortingAlgorithms() {
           <AlgorithmCard key={algorithm[0]} algorithm={algorithm[1]} />
         ))}
       </div>
-    </PageLayout>
+    </Layout>
   );
 }

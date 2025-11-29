@@ -1,9 +1,9 @@
 import Link from "next/link";
-import PageLayout from "@/components/layout/PageLayout";
+import Layout from "@/components/layout/Layout";
 
 export default function TermNotFound() {
   return (
-    <PageLayout title="Glossary Term Not Found">
+    <Layout title="Glossary Term Not Found">
       <div className="flex flex-col items-center justify-center py-12 max-w-4xl mx-auto">
         <div className="text-center">
           <svg
@@ -90,6 +90,6 @@ export default function TermNotFound() {
           </div>
         </div>
       </div>
-    </PageLayout>
+    </Layout>
   );
 }

@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useParams, notFound } from "next/navigation";
-import PageLayout from "@/components/layout/PageLayout";
+import Layout from "@/components/layout/Layout";
 import AlgorithmVisualizer from "@/components/visualizer/AlgorithmVisualizer";
 import { useAlgorithm } from "@/context/AlgorithmContext";
 import { getAlgorithmByName } from "@/lib/algorithms";
@@ -58,12 +58,12 @@ export default function SearchingAlgorithmPage() {
   }
 
   return (
-    <PageLayout
+    <Layout
       title={algorithmInfo.name}
       subtitle={algorithmInfo.subtitle}
       algorithmData={state.visualizationData || undefined}
     >
       <AlgorithmVisualizer />
-    </PageLayout>
+    </Layout>
   );
 }

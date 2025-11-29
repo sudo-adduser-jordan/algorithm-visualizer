@@ -1,46 +1,25 @@
-import { notFound } from "next/navigation";
-import PageLayout from "@/components/layout/PageLayout";
+import Layout from "@/components/layout/Layout";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import {
+  glossaryTerms,
   getGlossaryTermBySlug,
   getRelatedTerms,
 } from "@/lib/glossary/glossary";
-import { Metadata } from "next";
 
-type TermPageProps = {
-  params: {
-    term: string;
-  };
-};
-
-export async function generateMetadata({
-  params,
-}: TermPageProps): Promise<Metadata> {
-  const term = getGlossaryTermBySlug(params.term);
-
-  if (!term) {
-    return {
-      title: "Term Not Found | Algorithm Visualizer Glossary",
-      description: "The requested glossary term could not be found.",
-    };
-  }
-
-  return {
-    title: `${term.term} - Algorithm Glossary`,
-    description: term.shortDefinition,
-    keywords: [
-      term.term.toLowerCase(),
-      "algorithm",
-      term.category,
-      "computer science",
-      "programming",
-      "algorithm terminology",
-      ...(term.keywords || []),
-    ],
-  };
+export async function generateStaticParams() {
+  return glossaryTerms.map((term) => ({
+    params: term.slug,
+  }));
 }
 
-export default function GlossaryTermPage({ params }: TermPageProps) {
+export default function GlossaryTermPage({
+  params,
+}: {
+  params: {
+    term: string;
+  }
+}) {
   const term = getGlossaryTermBySlug(params.term);
 
   if (!term) {
@@ -50,7 +29,7 @@ export default function GlossaryTermPage({ params }: TermPageProps) {
   const relatedTerms = getRelatedTerms(term.slug);
 
   return (
-    <PageLayout title={term.term} subtitle={term.shortDefinition}>
+    <Layout title={term.term} subtitle={term.shortDefinition}>
       <div className="max-w-4xl mx-auto">
         <nav className="mb-8 text-sm">
           <ol className="flex items-center space-x-2">
@@ -182,6 +161,6 @@ export default function GlossaryTermPage({ params }: TermPageProps) {
           </div>
         </div>
       </div>
-    </PageLayout>
+    </Layout>
   );
 }

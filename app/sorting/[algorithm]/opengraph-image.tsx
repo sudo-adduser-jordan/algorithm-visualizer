@@ -1,6 +1,5 @@
 import { ImageResponse } from "next/og";
 import { availableAlgorithms } from "@/lib/algorithms/metadata";
-import { APP_URL } from "@/constants/URL";
 
 export const runtime = "edge";
 
@@ -146,7 +145,7 @@ export default async function Image({
             color: "#94a3b8",
           }}
         >
-          Learn algorithms interactively at {APP_URL}
+          Learn algorithms interactively at APP_URL
         </div>
       </div>
     ),

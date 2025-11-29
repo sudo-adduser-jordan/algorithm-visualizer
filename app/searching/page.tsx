@@ -1,4 +1,4 @@
-import PageLayout from "@/components/layout/PageLayout";
+import Layout from "@/components/layout/Layout";
 import AlgorithmCard from "@/components/AlgorithmCard";
 import { availableAlgorithms } from "@/lib/algorithms/metadata";
 
@@ -9,7 +9,7 @@ export default function SearchingAlgorithms() {
   );
 
   return (
-    <PageLayout
+    <Layout
       title="Searching Algorithms"
       subtitle="Searching algorithms are methods used to find specific items within a data structure. They are fundamental to many computational tasks and help find elements efficiently."
     >
@@ -18,6 +18,6 @@ export default function SearchingAlgorithms() {
           <AlgorithmCard key={algorithm[0]} algorithm={algorithm[1]} />
         ))}
       </div>
-    </PageLayout>
+    </Layout>
   );
 }
