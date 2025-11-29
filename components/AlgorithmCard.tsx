@@ -6,7 +6,7 @@ interface AlgorithmCardProps {
 }
 
 export default function AlgorithmCard({ algorithm }: AlgorithmCardProps) {
-  const { name, key, category, description } = algorithm;
+  const { name, key, category, description, difficulty } = algorithm;
 
   return (
     <div className="card hover:shadow-lg transition-shadow">
@@ -18,9 +18,13 @@ export default function AlgorithmCard({ algorithm }: AlgorithmCardProps) {
         <p className="mt-2 text-gray-600 line-clamp-2">{description}</p>
 
         <div className="mt-4 flex justify-between items-center">
-          <Link className="badge badge-info capitalize" href={`/${category}`}>
+        <Link
+            className={`badge badge-${difficulty} capitalize`}
+            href={`/difficulty/${difficulty}`}
+          >
             {category}
           </Link>
+
 
           <Link
             href={`/${category}/${key}`}

@@ -2,6 +2,7 @@ import PageLayout from "@/components/layout/PageLayout";
 import AlgorithmCard from "@/components/AlgorithmCard";
 import { availableAlgorithms } from "@/lib/algorithms/metadata";
 import { AlgorithmInfo } from "@/lib/types";
+import Link from "next/link";
 
 export default function Home() {
   // Group algorithms by category
@@ -24,12 +25,11 @@ export default function Home() {
       {algorithmsByCategory.map((category) => (
         <section key={category[0]} className="mb-12">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="heading-lg capitalize text-white">
+            <Link href={`/${category[0]}`} className="underline" >
+            <h2 className="heading-lg capitalize">
               {category[0]} Algorithms
             </h2>
-            {/* <Link href={`/${category[0]}`} className="btn btn-primary text-sm">
-              View All
-            </Link> */}
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
