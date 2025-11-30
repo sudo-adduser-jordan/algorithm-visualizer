@@ -35,7 +35,7 @@ export const availableAlgorithms: Record<string, AlgorithmInfo> = {
     subtitle: "Stable, divide-and-conquer algorithm with O(n log n) complexity",
     description:
       "Merge sort is a divide and conquer algorithm that divides the input array into two halves, recursively sorts them, and then merges the sorted halves. With a consistent O(n log n) time complexity regardless of input data, it outperforms simpler algorithms on large datasets. While requiring O(n) auxiliary space for the merging process, it guarantees stability and is particularly efficient for linked lists. Merge sort is often used in external sorting when data doesn't fit in memory.",
-    difficulty: "medium",
+    difficulty: "easy",
   },
   quickSort: {
     name: "Quick Sort",
@@ -44,7 +44,7 @@ export const availableAlgorithms: Record<string, AlgorithmInfo> = {
     subtitle: "Fast, in-place sorting with average O(n log n) performance",
     description:
       "Quick sort is a divide and conquer algorithm that picks an element as a pivot and partitions the array around the pivot. With an average time complexity of O(n log n) and minimal space requirements, it's typically faster in practice than other O(n log n) algorithms like merge sort. However, it has a worst-case time complexity of O(n²) with poor pivot selection and is not stable. Quick sort is widely used and serves as the foundation for many programming language sorting implementations.",
-    difficulty: "medium",
+    difficulty: "easy",
   },
   heapSort: {
     name: "Heap Sort",
@@ -53,7 +53,7 @@ export const availableAlgorithms: Record<string, AlgorithmInfo> = {
     subtitle: "Comparison-based sort using binary heap structure",
     description:
       "Heap sort is a comparison-based sorting algorithm that uses a binary heap data structure to build a max-heap and then repeatedly extracts the maximum element. With a guaranteed O(n log n) time complexity regardless of input data and O(1) auxiliary space, it combines many advantages of insertion sort and merge sort. While not stable and slightly slower than quick sort in practice, heap sort provides reliable performance without the risk of worst-case scenarios, making it valuable for systems requiring consistent performance.",
-    difficulty: "hard",
+    difficulty: "easy",
   },
   linearSearch: {
     name: "Linear Search",
@@ -62,7 +62,7 @@ export const availableAlgorithms: Record<string, AlgorithmInfo> = {
     subtitle: "Simple O(n) search through unsorted collections",
     description:
       "Linear search sequentially checks each element of the list until it finds an element that matches the target value. With a time complexity of O(n), it's the simplest searching algorithm but becomes inefficient for large datasets. One advantage is that it works on unsorted arrays and doesn't require any preprocessing. Linear search is practical for small arrays or when the target is likely to be found early in the sequence. It's also useful when searching rarely happens or when elements are frequently added and removed.",
-    difficulty: "easy",
+    difficulty: "medium",
   },
   binarySearch: {
     name: "Binary Search",
@@ -81,7 +81,7 @@ export const availableAlgorithms: Record<string, AlgorithmInfo> = {
       "Graph traversal algorithm that explores as far as possible along each branch before backtracking",
     description:
       "Depth-First Search (DFS) is a graph traversal algorithm that explores as far as possible along each branch before backtracking. It uses a stack data structure (often implemented using recursion) to keep track of vertices to visit next. DFS has applications in topological sorting, finding connected components, solving mazes, and detecting cycles in graphs.",
-    difficulty: "medium",
+    difficulty: "hard",
   },
   bfs: {
     name: "Breadth-First Search",
@@ -91,8 +91,7 @@ export const availableAlgorithms: Record<string, AlgorithmInfo> = {
       "Graph traversal algorithm that explores all neighbors at the current depth before moving deeper",
     description:
       "Breadth-First Search (BFS) is a graph traversal algorithm that explores all vertices at the present depth level before moving on to vertices at the next depth level. It uses a queue to keep track of the next vertices to visit, ensuring that vertices are visited in order of their distance from the source vertex. BFS is commonly used for finding the shortest path in unweighted graphs, connected components, and solving puzzles with the fewest possible moves.",
-    difficulty: "medium",
-  },
+    difficulty: "hard"},
   dijkstra: {
     name: "Dijkstra's Algorithm",
     key: "dijkstra",
@@ -111,6 +110,6 @@ export const availableAlgorithms: Record<string, AlgorithmInfo> = {
       "Linear ordering of vertices in a directed acyclic graph where directed edges are respected",
     description:
       "Topological Sort is an algorithm for ordering the vertices of a directed acyclic graph (DAG) such that for every directed edge (u,v), vertex u comes before vertex v in the ordering. This algorithm is essential for scheduling tasks with dependencies, course prerequisites planning, and compilation sequence determination. A graph must have no directed cycles to have a valid topological ordering, making this algorithm a useful tool for cycle detection as well.",
-    difficulty: "medium",
+    difficulty: "hard",
   },
 };

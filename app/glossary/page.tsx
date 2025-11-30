@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Layout from "@/components/layout/Layout";
 import Link from "next/link";
-import { glossaryTerms } from "@/lib/glossary/glossary";
+import { glossaryTerms } from "@/lib/glossary";
 import { groupTermsByFirstLetter } from "@/lib/utils";
 
 export default function GlossaryPage() {

@@ -5,6 +5,7 @@ export async function generateStaticParams() {
     { algorithm: 'dfs' },
     { algorithm: 'bfs' },
     { algorithm: 'dijkstra' },
+    { algorithm: 'topologicalSort' },
   ];
 }
 

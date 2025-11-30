@@ -5,7 +5,7 @@ import {
   glossaryTerms,
   getGlossaryTermBySlug,
   getRelatedTerms,
-} from "@/lib/glossary/glossary";
+} from "@/lib/glossary";
 
 export async function generateStaticParams() {
   return glossaryTerms.map((term) => ({
