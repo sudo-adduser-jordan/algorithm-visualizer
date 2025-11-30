@@ -1,6 +1,15 @@
-import React from "react";
-import { AlgorithmProvider } from "@/context/AlgorithmContext";
+import { AlgorithmProvider } from "@/components/AlgorithmContext";
 
+export async function generateStaticParams() {
+  return [
+    { algorithm: 'bubbleSort' },
+    { algorithm: 'selectionSort' },
+    { algorithm: 'insertionSort' },
+    { algorithm: 'mergeSort' },
+    { algorithm: 'quickSort' },
+    { algorithm: 'heapSort' },
+  ];
+}
 
 export default function VisualizerLayout({
   children,

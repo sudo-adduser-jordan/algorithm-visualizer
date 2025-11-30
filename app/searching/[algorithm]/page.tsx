@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useParams, notFound } from "next/navigation";
 import Layout from "@/components/layout/Layout";
 import AlgorithmVisualizer from "@/components/visualizer/AlgorithmVisualizer";
-import { useAlgorithm } from "@/context/AlgorithmContext";
+import { useAlgorithm } from "@/components/AlgorithmContext";
 import { getAlgorithmByName } from "@/lib/algorithms";
 import { getRandomValueFromArray } from "@/lib/utils";
 import { availableAlgorithms } from "@/lib/algorithms/metadata";

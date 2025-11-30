@@ -1,6 +1,6 @@
 "use client";
 
-import { useAlgorithm } from "@/context/AlgorithmContext";
+import { useAlgorithm } from "@/components/AlgorithmContext";
 
 interface VisualizerControlsProps {
   currentStep: number;

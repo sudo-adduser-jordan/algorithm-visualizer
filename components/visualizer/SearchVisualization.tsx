@@ -1,5 +1,5 @@
 import { SearchStep } from "@/lib/types";
-import { useAlgorithm } from "@/context/AlgorithmContext";
+import { useAlgorithm } from "@/components/AlgorithmContext";
 import { getAlgorithmByName } from "@/lib/algorithms";
 import { useState, useEffect } from "react";
 

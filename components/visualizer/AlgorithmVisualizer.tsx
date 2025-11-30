@@ -7,7 +7,7 @@ import VisualizerControls from "./VisualizerControls";
 import AlgorithmInfo from "./AlgorithmInfo";
 import AlgorithmPseudocode from "./AlgorithmPseudocode";
 import ColorLegend from "./ColorLegend";
-import { useAlgorithm } from "@/context/AlgorithmContext";
+import { useAlgorithm } from "@/components/AlgorithmContext";
 import { getAlgorithmByName } from "@/lib/algorithms";
 import { GraphStep, SearchStep, SortingStep } from "@/lib/types";
 

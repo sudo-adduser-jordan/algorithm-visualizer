@@ -9,27 +9,31 @@ import {
 
 export async function generateStaticParams() {
   return glossaryTerms.map((term) => ({
-    params: term.slug,
+    term: term.slug,
   }));
 }
 
-export default function GlossaryTermPage({
+export default async function GlossaryTermPage({
   params,
 }: {
   params: {
     term: string;
   }
 }) {
-  const term = getGlossaryTermBySlug(params.term);
 
-  if (!term) {
+  // Await params if it's a promise
+  const resolvedParams = await Promise.resolve(params);
+  const { term } = resolvedParams;
+    const data = getGlossaryTermBySlug(term);
+
+  if (!data) {
     notFound();
   }
 
-  const relatedTerms = getRelatedTerms(term.slug);
+  const relatedTerms = getRelatedTerms(data.slug);
 
   return (
-    <Layout title={term.term} subtitle={term.shortDefinition}>
+    <Layout title={data.term} subtitle={data.shortDefinition}>
       <div className="max-w-4xl mx-auto">
         <nav className="mb-8 text-sm">
           <ol className="flex items-center space-x-2">
@@ -48,7 +52,7 @@ export default function GlossaryTermPage({
               </Link>
             </li>
             <li className="text-gray-500">/</li>
-            <li className="text-blue-600 font-medium">{term.term}</li>
+            <li className="text-blue-600 font-medium">{data.term}</li>
           </ol>
         </nav>
 
@@ -56,9 +60,9 @@ export default function GlossaryTermPage({
           <div className="flex justify-between items-start mb-6">
             <div>
               <span className="badge badge-info capitalize">
-                {term.category}
+                {data.category}
               </span>
-              <h1 className="heading-xl mt-2">{term.term}</h1>
+              <h1 className="heading-xl mt-2">{data.term}</h1>
             </div>
 
             <Link
@@ -84,17 +88,17 @@ export default function GlossaryTermPage({
 
           <div className="prose prose-lg max-w-none">
             <div
-              dangerouslySetInnerHTML={{ __html: term.fullDefinition }}
+              dangerouslySetInnerHTML={{ __html: data.fullDefinition }}
               className="text-gray-700"
             />
           </div>
 
-          {term.examples && (
+          {data.examples && (
             <div className="mt-8">
               <h2 className="heading-lg mb-4">Examples</h2>
               <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
                 <ul className="list-disc pl-6 space-y-3 text-gray-700">
-                  {term.examples.map((example, index) => (
+                  {data.examples.map((example, index) => (
                     <li key={index}>{example}</li>
                   ))}
                 </ul>
@@ -102,22 +106,22 @@ export default function GlossaryTermPage({
             </div>
           )}
 
-          {term.codeExample && (
+          {data.codeExample && (
             <div className="mt-8">
               <h2 className="heading-lg mb-4">Code Example</h2>
               <div className="bg-gray-900 text-white rounded-lg p-6 overflow-x-auto">
                 <pre className="text-sm">
-                  <code>{term.codeExample}</code>
+                  <code>{data.codeExample}</code>
                 </pre>
               </div>
             </div>
           )}
 
-          {term.visualAid && (
+          {data.visualAid && (
             <div className="mt-8">
               <h2 className="heading-lg mb-4">Visual Explanation</h2>
               <div className="bg-white border border-gray-200 rounded-lg p-6">
-                <div dangerouslySetInnerHTML={{ __html: term.visualAid }} />
+                <div dangerouslySetInnerHTML={{ __html: data.visualAid }} />
               </div>
             </div>
           )}
