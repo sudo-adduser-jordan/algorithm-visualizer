@@ -52,8 +52,11 @@ export function bubbleSort(array: number[]): AlgorithmVisualization {
       completed: [...completed],
     });
 
-    // If no swapping occurred in this pass, the array is already sorted
-    if (!swapped) break;
+    // If no swapping occurred in this pass, the array is already sorted, mark all as completed
+    if (!swapped) {
+      steps[steps.length - 1].completed = Array.from({ length: n }, (_, k) => k);
+      break;
+    }
   }
 
   return createVisualization("bubbleSort", steps, {

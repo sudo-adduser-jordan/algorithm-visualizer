@@ -4,7 +4,7 @@ import {
   SearchStep,
   SortingStep,
 } from "../types";
-import { availableAlgorithms } from "./metadata";
+import { availableAlgorithms } from "./data";
 
 /**
  * Helper function to create an AlgorithmVisualization object from steps and algorithm-specific details

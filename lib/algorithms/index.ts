@@ -45,18 +45,3 @@ export function getAlgorithmByName(
   return algorithms[name] || null;
 }
 
-// Export all algorithms
-export {
-  bubbleSort,
-  selectionSort,
-  insertionSort,
-  mergeSort,
-  quickSort,
-  heapSort,
-  linearSearch,
-  binarySearch,
-  dfs,
-  bfs,
-  dijkstra,
-  topologicalSort,
-};

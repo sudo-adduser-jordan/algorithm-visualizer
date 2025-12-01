@@ -1,6 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import Link from "next/link";
-import { availableAlgorithms } from "@/lib/algorithms/metadata";
+import { availableAlgorithms } from "@/lib/algorithms/data";
 
 // Define type for card properties
 type CardProps = {

@@ -1,6 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import AlgorithmCard from "@/components/AlgorithmCard";
-import { availableAlgorithms } from "@/lib/algorithms/metadata";
+import { availableAlgorithms } from "@/lib/algorithms/data";
 
 export default function SearchingAlgorithms() {
   // Filter algorithms to only show searching ones

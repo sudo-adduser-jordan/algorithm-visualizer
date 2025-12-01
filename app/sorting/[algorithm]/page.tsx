@@ -6,7 +6,7 @@ import Layout from "@/components/layout/Layout";
 import AlgorithmVisualizer from "@/components/visualizer/AlgorithmVisualizer";
 import { useAlgorithm } from "@/components/AlgorithmContext";
 import { getAlgorithmByName } from "@/lib/algorithms";
-import { availableAlgorithms } from "@/lib/algorithms/metadata";
+import { availableAlgorithms } from "@/lib/algorithms/data";
 
 export default function AlgorithmPage() {
   const params = useParams();
