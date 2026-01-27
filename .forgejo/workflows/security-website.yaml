@@ -1,0 +1,16 @@
+name: Test site for publicly known js vulnerabilities
+
+on: push
+jobs:
+
+  security:
+
+    runs-on: docker
+    container:
+      image: ghcr.io/catthehacker/ubuntu:act-22.04
+
+    steps:
+      - name: Test for public javascript library vulnerabilities 
+        uses: lirantal/is-website-vulnerable@main
+        with:
+          scan-url: "https://sudo-adduser-jordan.github.io/resume"

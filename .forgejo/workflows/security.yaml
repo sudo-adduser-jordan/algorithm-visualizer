@@ -1,0 +1,24 @@
+name: GitGuardian scan
+
+on: [push, pull_request]
+
+jobs:
+  scanning:
+    name: GitGuardian scan
+    runs-on: docker
+    container:
+      image: ghcr.io/catthehacker/ubuntu:act-22.04
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # fetch all history so multiple commits can be scanned
+
+      - name: GitGuardian scan
+        uses: https://github.com/GitGuardian/ggshield-action@v1
+        env:
+          GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}
